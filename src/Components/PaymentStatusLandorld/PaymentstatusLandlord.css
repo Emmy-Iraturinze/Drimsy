@@ -1,0 +1,22 @@
+.card{
+  width: 18rem;
+
+}
+.card small{
+     font-size: 5px!important;
+}
+
+.form1{
+margin-left: 300px;
+}
+.card2
+{
+  background: linear-gradient(#fff,blue);
+}
+#header5{
+  font-size: 50px!important;
+}
+.bi-cash{
+  position:absolute ;
+  margin-left: -200px!important;
+}

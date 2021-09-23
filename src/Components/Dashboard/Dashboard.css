@@ -1,0 +1,334 @@
+
+.height {
+  height: 100vh
+}
+
+.form {
+  position: relative
+}
+
+.form .fa-search {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #9ca3af
+}
+
+.form span {
+  position: absolute;
+  right: 17px;
+  top: 13px;
+  padding: 2px;
+  border-left: 1px solid #d1d5db
+}
+
+.left-pan {
+  padding-left: 7px
+}
+
+.left-pan i {
+  padding-left: 10px
+}
+
+.form-input {
+  height: 55px;
+  text-indent: 33px;
+  border-radius: 10px
+}
+
+.form-input:focus {
+  box-shadow: none;
+  border: none
+}
+
+
+
+    .nav1{
+      background: rgba(26, 4, 4, 0) !important;
+      padding: 1px;
+ 
+    }
+  
+    .loading-text{
+      margin-top: 300px;
+    }
+    .scroll-up {
+   
+  
+    position: sticky;
+ 
+  
+ 
+    }
+    #devices{
+      margin-top: 100px!important;
+    }
+    #devices h1{
+      margin-top: 200px!important;
+      font-weight: 900;
+    }
+    .bi-star-fill{
+      color:#ff3434;
+    }
+    .fa-bed{
+      color: black;
+    }
+    #location img{
+    border-radius: 5px;
+    transition: 0.5s ease;
+    cursor: pointer;
+    }
+    .stick-search-engine{
+    
+    }
+    #location img:hover{
+      transform: scale(1.1);
+      }
+      link a{
+        text-decoration: none !important;
+      }
+      .nav-link{
+    
+        margin: 15px;
+        color: white!important;
+        margin-top: 30px;
+        font-weight: 900;
+        text-decoration: none!important;
+        font-size: 13px !important;
+        cursor: pointer;
+      }
+      .home-link{
+        margin-left: 185px !important;
+      }
+      #footer{
+        background: #00000023;
+        height: 120%;
+      
+      }
+     #footer .col1{
+    margin-right: 170px;
+     }
+     #footer .col1 p{
+    font-weight: lighter;
+    }
+    #footer .col2 p{
+      font-weight: lighter;
+      }
+      #footer .col2 {
+     margin-right: 170px;
+        }
+      #footer .col3 .bi{
+       color: white;
+       font-size: 30px;
+        }
+    
+    
+      .navbar-brand {
+        font-weight: bolder;
+        margin-left: 79px;
+      }
+      nav .btn1{
+        margin-left:270px;
+      }
+      .clipart2791005{
+        position: absolute;
+        margin-left: 520px;
+        margin-top:100px;
+        cursor: pointer;
+      }
+   
+      .bi-globe{
+        font-size: 14px;
+      }
+      #featured .card{
+        width: 22.2rem;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        transition: 0.5s ease;
+      }
+    
+      #featured .card:hover{
+    transform: translateY(-10px);
+    
+      }
+      #featured .card .btn{
+        background: #ff3434;
+        border: none;
+      }
+      nav a{
+     font-size: 12px!important;
+     font-weight: 200;
+     margin-top: -16px;
+      }
+      .bi-list{
+        color: white;
+        position: absolute;
+        margin-top: 38px;
+        font-size: 35px;
+        cursor: pointer;
+      }
+    #section2-from{
+     z-index: 1;
+     margin-top: -0px;
+     position: relative;
+    }
+    .video-wrappe{
+      position: relative;
+      top: 0;
+      right: 0;
+      left: 0;
+      width: 100%;
+    }
+    .navbar-brand img{
+      width: 100px;
+      margin-top: px;
+    }
+    
+ nav form{
+   width: 50%;
+  
+ }
+ 
+    .section1 video{
+    width: 100%;
+    height: 50%;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    object-fit: cover;
+    position: relative;
+    margin-top: -489px;
+    
+    
+    }
+    .Ad-pop h2{
+    font-weight: 900;
+    
+    }
+    .Ad-pop span{
+      border-bottom:6px solid #73CFCA;
+      color: #73CFCA;
+    }
+    .carousel-caption{
+      background: rgba(0, 0, 0, 0.522);
+    
+    
+    }
+    .carousel-inner h5,p,a{
+    color:white;
+    font-size: small;
+    
+    }
+    
+    
+    #rentals .row{
+    margin-bottom: 20px;
+    }
+    #rentals img{
+     border-radius: 10px;
+     cursor: pointer;
+     transition: 0.5s ease;
+      }
+      #rentals img:hover {
+     
+      transform: translateY(-10px);
+         }
+    .input-group {
+    width: 50%;
+    }
+    .section2{
+      width: 50%;
+    
+    }
+    .section2 .btn{
+    
+    margin-top: -3px;
+    }
+    
+    .section2 h2{
+      font-weight: bolder;
+      margin-bottom: 25px;
+    }
+    #section2 input{
+     width: 41%;
+     padding: .373rem .75rem;
+     border-radius: 5px;
+     margin-right: 5px;
+     outline: none;
+     border: none;
+    }
+    .section1 form{
+      
+    
+       margin-top: 50px;
+    
+      width: 100%;
+    
+    
+        
+          }
+          .section1 small{
+      
+    font-size: 50px;
+    color:#ff3434;
+     
+             
+               }
+          .section1 span{
+    
+    
+    
+               }
+    
+               .modal-content2{
+                 background: white!important;
+                 height: 200px!important;
+             
+  
+                }
+                .modal-body h6{
+                  color: black!important;
+                }
+                .modal2{
+                  margin-top: 100px !important;
+                }
+ 
+    /* modal*/
+ 
+ 
+   
+    .modal-content{
+     background: linear-gradient(#387CE2,#73CFCA);
+     height: 500px
+    }
+    .modal h1{
+      font-weight: bolder;
+      margin-left: 60px;
+    }
+    .modal h6{
+     font-weight: bolder;
+     margin-top: -60px !important
+   ;
+   }
+   .modal button{
+     margin-bottom: 20px!important;
+    
+   }
+    .modal img{
+      width: 70px;
+      margin-top: -23px;
+    }
+  
+    .modal small{
+      color: white;
+      font-size: 10px;
+    }
+    .method-of-payment-img{
+      width: 150px!important;
+   
+      position: relative;
+   
+    
+    }

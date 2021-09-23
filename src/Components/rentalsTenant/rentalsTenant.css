@@ -1,0 +1,106 @@
+
+@media screen and (max-width:600px)  {
+     nav li .btn{
+display: none;
+     }
+     
+}
+@media screen and (max-width:600px)  {
+     nav span{
+display: block;
+border-bottom: none !important;
+     }
+  
+}
+
+@media screen and (min-width:1920px)  {
+     iframe{
+     height: 30%!important;
+}
+  
+}
+
+
+.nav4 .btn1{
+     margin-left:400px
+}
+
+
+.fa-user-plus ,.fa-edit, .fa-trash-alt,.fa-user-circle,.fa-info-circle{
+     font-size: 35px;
+     margin: 10px;
+
+   
+}
+.fa-trash-alt{
+     color: red;
+     background: white;
+     padding: 3px;
+     border-radius: 50px;
+     cursor: pointer;
+    
+}
+.fa-pen-square{
+ 
+   color: rgb(255, 255, 255);
+
+  padding: 7px; 
+   border-radius: 50px;
+   font-size: 35px;
+   
+}
+.fa-user-circle{
+margin-left: 70px;
+}
+.carousel-item img {
+border-radius: 10px;
+width: 100%;
+}
+.row{
+     margin-bottom: 90px!important;
+}
+
+
+
+#section1{
+     margin-top: 200px;
+}
+
+
+.btn2{
+     margin-left: 20px;
+}
+nav{
+     background: rgb(0, 0, 0);
+}
+.fas{
+     color: white;
+
+   
+}
+.fa-home{
+     font-size: 40px;
+}
+iframe{
+   border-radius: 10px;
+}
+#footer{
+   bottom: 0 !important;
+}
+#footer .col1{
+     margin-right: 170px;
+      }
+      #footer .col1 p{
+     font-weight: lighter;
+     }
+     #footer .col2 p{
+       font-weight: lighter;
+       }
+       #footer .col2 {
+      margin-right: 170px;
+         }
+       #footer .col3 .bi{
+        color: white;
+        font-size: 30px;
+         }
+     
