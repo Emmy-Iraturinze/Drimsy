@@ -21,6 +21,10 @@ import AddProperty from './Components/rentals-landlord/Add_property/AddProperty'
 import RentalsTenant from './Components/rentalsTenant/RentalsTenant';
 import AddTenant from './Components/AddTenant/AddTenant';
 import Footer from './Components/footer/Footer';
+import Public from './Components/Public/Public';
+import SignIn from './Components/Login/SignIn';
+import TenantDetails from './Components/TenantDetails/TenantDetails';
+import PaymentstatusTenant from './Components/PaymentstatusTentant/PaymenystatusTenant';
 
 
 function App() {
@@ -46,7 +50,7 @@ React.useEffect(()=> {
 
 },[])
   return (
-    <div className="App bg-dark">
+    <div className="App">
       <AuthApi.Provider value={{auth,setAuth}}>
       <Router>
 
@@ -79,14 +83,25 @@ const Routes = ()=> {
   
  <ProtectedRoute path="/dashboard" auth={ Auth.auth} component={Dashboard}/>
 
-<ProtectedLogin  path="/login"  auth={ Auth.auth}  component={Login}/>
+
+<ProtectedLogin  path="/signIn"  auth={ Auth.auth}  component={SignIn}/>
 <ProtectedLogin  path="/Signup"  auth={ Auth.auth}  component={SignUp}/>
+
+
 
 <Route path="/rentals">
   <Rentals/>
 </Route>
+
+{/* <Route path="/">
+  <Public/>
+</Route> */}
+
 <Route path="/add-tenant">
   <AddTenant/>
+</Route>
+<Route path="/tenant-details">
+  <TenantDetails/>
 </Route>
 <Route path="/pay-rent">
   <PaymentForm/>
@@ -94,11 +109,14 @@ const Routes = ()=> {
 <Route path="/rentals2">
   <RentalsTenant/>
 </Route>
-<Route path="/rental-pay">
+<Route exact path="/rental-pay">
     <PaymentForm/>
 </Route>
 <Route path="/add-prop">
   <AddProperty/>
+</Route>
+<Route path="/status-tenant">
+ <PaymentstatusTenant/>
 </Route>
 
 </Switch>
@@ -122,7 +140,7 @@ const ProtectedRoute = ({auth,component:Component,...rest}) =>{
     ):
     (
 
-      <Redirect to="/login"/>
+      <Redirect to="/signIn"/>
     )
   
   }

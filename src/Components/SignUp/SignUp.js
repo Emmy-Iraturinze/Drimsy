@@ -145,7 +145,7 @@ value={formik.values.password}/>
 <input class="form-control text-muted"
  type="password" name="comfirmPassword" 
  placeholder="" 
-      onChange={formik.handleChange}
+
 onBlur={formik.handleBlur}
 value={formik.values.comfirmPassword}/>
 {formik.touched.comfirmPassword && formik.errors.comfirmPassword ? <small class="text-danger" > {formik.errors.comfirmPassword}</small> : null}

@@ -5,296 +5,296 @@
 import React ,{ Component } from "react";
 import {Link} from 'react-router-dom'
 import axios from "axios";
-
 import './rentalsTenant.css'
+import { useState, useEffect} from 'react';
+import { Card, Input } from 'semantic-ui-react'
 
+import Header from '../Header/Header'
+import Footer from '../footer/Footer'
 
+export default function RentalsTenant() {
+    const [APIData, setAPIData] = useState([])
+    const [searchTerm, setSearchTerm] = useState('');
+    const [filteredResults, setFilteredResults] = useState([]);
+    useEffect(() => {
+        axios.get(`https://endpoint.drimsy.com/properties`)
+            .then((response) => {
+                setAPIData(response.data);
+            })
+    }, [])
 
-
-class RentalsTenant  extends Component {
-  constructor(){
-  super();
-  this.state={
-    data:false,
-  }
-  }
-  
-  state={};
-  
-  componentDidMount(){
-  
-  let url ="https://endpoint.drimsy.com/properties/";
-  fetch(url,{
-  method:'GET',
-  headers:{
-    'Accept':'application/json',
-    'content-type':'application/json',
-  }
-  
-  
-  }).then((result)=>{
-    result.json().then((resp)=>{
-  
-  
-  this.setState({property:resp})
-      
-    })
-  })
-  
-  const config = {
-    headers:{
-      Authorization:'Bearer' + localStorage.getItem('id')
+    const searchData = (value) => {
+        setSearchTerm(value)
+        if (searchTerm !== '') {
+            const filteredData = APIData.filter((property) => {
+                return Object.values(property).join('').toLowerCase().includes(searchTerm.toLowerCase())
+            })
+            setFilteredResults(filteredData)
+        }
+        else {
+            setFilteredResults(APIData)
+        }
     }
-  };
-  
-  axios.get('user',config).then(
-  
-    res =>{
-  
-      this.setState({
-  
-        user:res.data
-  
-      });
-  
-    },
-  
-    err => {
-      console.log(err)
-    }
-  )
-  
-  }
-  
-  
-  
-    render(){
-  
-  if(this.state.user){
-  
-  return( 
-  <h2>Good Afternoon {this.state.user.first_name} {this.state.user.Last_name}</h2>
-  
-  )
-  
-  }
-  
-      const properties=this.state.property;
-  console.warn(properties);
-  
-      return <div>
-  
-  {
-    properties?
-  
-  
-  <div>
-   <div class="section1 bg-dark" >
-         
-         <div class="container">
-         <div>
-         <nav class="navbar navbar-expand-lg navbar-light justify-content-end   ">
-  <div class="container-fluid">
-    <a class="navbar-brand mt-2" href="#"><img src="https://api.freelogodesign.org/files/95d71dec2e024c6db036e3fb73e35817/thumb/logo_200x200.png?v=637652951930000000"/></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav  mb-2 mb-lg-0">
-        <li class="nav-item">
-        <Link to="/dashboard" style={{textDecoration:"none",marginLeft:"320px"}}>  <a class="nav-link active text-dark" aria-current="page"style={{textDecoration:"none"}}>HOME</a></Link>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " aria-current="page"data-bs-toggle="modal" data-bs-target="#exampleModal">SUBSCRIBE</a>
-        </li>
-        <li class="nav-item">
-       <Link to="/rentals" style={{textDecoration:"none"}}><a class="nav-link " aria-current="page" href="#">MY RENTALS</a></Link>
-        </li>
-        <li class="nav-item">
-         <Link to="/rental-pay" style={{textDecoration:"none"}}> <a class="nav-link " aria-current="page" href="#">PAY RENT</a></Link>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " aria-current="page" href="#">PAYMENT STATUS</a><Link to="/status-tenant" style={{textDecoration:"none"}}></Link>
-        </li>
-        <li className="nav-item me-2">
-<Link to="/login" className="link"style={{textDecoration:"none"}}> <a className="nav-link btn btn-primary me-5 " >Login/Register</a></Link>
-        </li>
-  
-      </ul>
 
+    return (
+        <div class="container-fluid">
+<Header/>
+<div class="container mt-4">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-9">
+            <div class="card p-4 mt-3  bd-dark">
+                <h3 class="heading mt-5 text-center text-muted">Search Any type of House you want</h3>
+                <div class="d-flex justify-content-center px-5">
+                    <div class="search"> <input type="text" 
+                    class="search-input" 
+                    placeholder="Search..." 
+                    name=""  onChange={(e) => searchData(e.target.value)}/> <a href="#" class="search-icon"> <i class="fa fa-search"></i> </a> </div>
+                </div>
+                <div class="row mt-4 g-1 px-4 mb-5">
+                    <div class="col-md-2">
+                        <div class="card-inner p-3 d-flex flex-column align-items-center"> <img src="https://cdn-icons-png.flaticon.com/512/259/259973.png" width="50"/>
+                            <div class="text-center text-dark"> <p class="mg-text text-dark">Bathroom</p> </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card-inner p-3 d-flex flex-column align-items-center"> <img src="https://cdn-icons-png.flaticon.com/512/2148/2148404.png" width="50"/>
+                            <div class="text-center mg-text"> <p class="text-dark">Bedroom</p> </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card-inner p-3 d-flex flex-column align-items-center"> <img src="https://cdn-icons-png.flaticon.com/512/927/927667.png" width="50"/>
+                            <div class="text-center mg-text"> <p class="text-dark">Location </p> </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card-inner p-3 d-flex flex-column align-items-center"> <img src="https://cdn-icons-png.flaticon.com/128/2488/2488749.png" width="50"/>
+                            <div class="text-center mg-text"> <p class="text-dark">Price</p> </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card-inner p-3 d-flex flex-column align-items-center"> <img src="https://cdn-icons-png.flaticon.com/512/1721/1721108.png" width="50"/>
+                            <div class="text-center mg-text"> <p class="text-dark">Pool</p> </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card-inner p-3 d-flex flex-column align-items-center"> <img src="https://cdn-icons-png.flaticon.com/128/2439/2439889.png" width="50"/>
+                            <div class="text-center mg-text"> <p class="text-dark">Parking</p> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</nav>
-         </div>
- <div id="section1" class="container">
- <div class="row ">
-  <div class="col-sm-8">
-  <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel">
-<div class="carousel-inner">
- <div class="carousel-item active">
-   <img src={properties[1].thumbnail} class="d-block w-100" alt="..."/>
- </div>
- <div class="carousel-item">
-   <img src={properties[1].thumbnail} class="d-block w-100" alt="..."/>
- </div>
- <div class="carousel-item">
-   <img src={properties[1].thumbnail} class="d-block w-100" alt="..."/>
- </div>
 </div>
-<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
- <span class="visually-hidden">Previous</span>
-</button>
-<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
- <span class="carousel-control-next-icon" aria-hidden="true"></span>
- <span class="visually-hidden">Next</span>
-</button>
-</div>
-  </div>
-  <div class="col-sm-4">
-       <h2 class="text-white">House 1</h2><br/>
+            {/* search2 */}
+ <div class="container" >
+        
+            <div itemsPerRow={3} >
+                {searchTerm.length > 1 ? (
+                    filteredResults.map((property) => {
+                        return (
+                            <div class="container">
+                                <div class="row">
+
+                                <div class="col-md-3">
+                                <div class="card-sl">
+                                  <div class="card-image">
+                                  <img
+                                 src={property.thumbnail} />
+                                  </div>
+
+                                     <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+                                     <div class="card-heading">
+                                     {property.name}
+                                      </div>
+                                      <div class="card-text">
+                                      {property.other_amenities}
+                                        </div>
+                                      <div class="card-text">
+                                             {property.rent_amount}
+                                               </div>
+                                        <a href="#" class="card-button bg-danger"> Request</a>
+                                           <a href="#" class="card-button mt-4 "> view details</a>
+                                        </div>
+                                        </div>
+
+                                <div class="col-md-3">
+                                <div class="card-sl">
+                                  <div class="card-image">
+                                  <img
+                                 src={property.thumbnail} />
+                                  </div>
+
+                                     <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+                                     <div class="card-heading">
+                                     {property.name}
+                                      </div>
+                                      <div class="card-text">
+                                      {property.other_amenities}
+                                        </div>
+                                      <div class="card-text">
+                                             {property.rent_amount}
+                                               </div>
+                                               <div class="card-text">
+                                             {property.Bathroom}
+                                               </div>
+                                        <a href="#" class="card-button bg-danger"> Request</a>
+                                           <a href="#" class="card-button mt-4 "> view details</a>
+                                        </div>
+                                        </div>
+
+                                <div class="col-md-3">
+                                <div class="card-sl">
+                                  <div class="card-image">
+                                  <img
+                                 src={property.thumbnail} />
+                                  </div>
+
+                                     <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+                                     <div class="card-heading">
+                                     {property.name}
+                                      </div>
+                                      <div class="card-text">
+                                      {property.other_amenities}
+                                        </div>
+                                      <div class="card-text">
+                                             {property.rent_amount}
+                                               </div>
+                                        <a href="#" class="card-button bg-danger"> Request</a>
+                                           <a href="#" class="card-button mt-4 "> view details</a>
+                                        </div>
+                                        </div>
+
+                                <div class="col-md-3">
+                                <div class="card-sl">
+                                  <div class="card-image">
+                                  <img
+                                 src={property.thumbnail} />
+                                  </div>
+
+                                     <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+                                     <div class="card-heading">
+                                     {property.name}
+                                      </div>
+                                      <div class="card-text">
+                                      {property.other_amenities}
+                                        </div>
+                                      <div class="card-text">
+                                             {property.rent_amount}
+                                               </div>
+                                        <a href="#" class="card-button bg-danger"> Request</a>
+                                           <a href="#" class="card-button mt-4 "> view details</a>
+                                        </div>
+                                        </div>
+                         
+                                  
+                                 
+                                </div>
+                            </div>
+                        )
+                    })
+                ) : (
+                    APIData.map((property) => {
+                        return (
+                            <div>
+                                <div class="row">
+                                  <div className="col-md-3">
+                                  <div class="card-sl">
+                                  <div class="card-image">
+                                  <img
+                                 src={property.thumbnail} />
+                                  </div>
+
+                                     <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+                                     <div class="card-heading">
+                                     {property.name}
+                                      </div>
+                                      <div class="card-text">
+                                      {property.other_amenities}
+                                        </div>
+                                      <div class="card-text">
+                                             {property.rent_amount}
+                                               </div>
+                                        <a href="#" class="card-button bg-danger"> Request</a>
+                                           <a href="#" class="card-button mt-4 "> view details</a>
+                                        </div>
+                                  </div>
+                                  <div className="col-md-3">
+                                  <div class="card-sl">
+                                  <div class="card-image">
+                                  <img
+                                 src={property.thumbnail} />
+                                  </div>
+
+                                     <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+                                     <div class="card-heading">
+                                     {property.name}
+                                      </div>
+                                      <div class="card-text">
+                                      {property.other_amenities}
+                                        </div>
+                                      <div class="card-text">
+                                             {property.rent_amount}
+                                               </div>
+                                        <a href="#" class="card-button bg-danger"> Request</a>
+                                           <a href="#" class="card-button mt-4 "> view details</a>
+                                        </div>
+                                  </div>
+                                  <div className="col-md-3">
+                                  <div class="card-sl">
+                                  <div class="card-image">
+                                  <img
+                                 src={property.thumbnail} />
+                                  </div>
+
+                                     <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+                                     <div class="card-heading">
+                                     {property.name}
+                                      </div>
+                                      <div class="card-text">
+                                      {property.other_amenities}
+                                        </div>
+                                      <div class="card-text">
+                                             {property.rent_amount}
+                                               </div>
+                                        <a href="#" class="card-button bg-danger"> Request</a>
+                                           <a href="#" class="card-button mt-4 "> view details</a>
+                                        </div>
+                                  </div>
+                                  <div className="col-md-3">
+                                  <div class="card-sl">
+                                  <div class="card-image">
+                                  <img
+                                 src={property.thumbnail} />
+                                  </div>
+
+                                     <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+                                     <div class="card-heading">
+                                     {property.name}
+                                      </div>
+                                      <div class="card-text">
+                                      {property.other_amenities}
+                                        </div>
+                                      <div class="card-text">
+                                             {property.rent_amount}
+                                               </div>
+                                        <a href="#" class="card-button bg-danger"> Request</a>
+                                           <a href="#" class="card-button mt-4 "> view details</a>
+                                        </div>
+                                  </div>
+                                   
+
+                                </div>
+
+                         
+                            </div>
+                        )
+                    })
+                )}
+            </div>
+        </div>
+        <Footer/>
+        </div>
        
-       <p class="text-secondary">This exceptional residence is one of only 
-         four homes in this magnificent double 
- 
-            square feet of single-level living on 
-            the 3rd floor of this boutique building</p>
-            <p ><i class="fas fa-bed text-white me-2"></i>Bedrooms</p>
-            <p> <i class="fas fa-bath me-2"></i>Bathrooms</p>
-            <h5 class="text-white"><i class="fas fa-dollar-sign me-2 text-white"></i>Rwf 100,000</h5>
-            <iframe class="mt-3" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15949.877336139529!2d30.12427405!3d-1.9661770499999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2srw!4v1629969202800!5m2!1sen!2srw" width="100%" height="36%" allowfullscreen="" loading="lazy"></iframe>
-          <a class="btn text-white"style={{backgroundColor:"#ED4C5C"}} data-bs-toggle="modal" data-bs-target="#staticBackdrop">Request</a>      </div>
-       <div class="col-sm">
-       
-       </div>
-</div>
-
-<div class="row mt-5 ">
-  <div class="col-sm-8">
-  <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel">
-<div class="carousel-inner">
- <div class="carousel-item active">
-   <img src={properties[1].thumbnail} class="d-block w-100"  alt="..."/>
- </div>
- <div class="carousel-item">
-   <img src={properties[1].thumbnail} class="d-block w-100" alt="..."/>
- </div>
- <div class="carousel-item">
-   <img src={properties[1].thumbnail} class="d-block w-100" alt="..."/>
- </div>
-</div>
-<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
- <span class="visually-hidden">Previous</span>
-</button>
-<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
- <span class="carousel-control-next-icon" aria-hidden="true"></span>
- <span class="visually-hidden">Next</span>
-</button>
-</div>
-  </div>
-  <div class="col-sm-4">
-       <h2 class="text-white">House 1</h2><br/>
-       
-       <p class="text-secondary">This exceptional residence is one of only four homes in this magnificent double 
- 
-            square feet of single-level living on the 3rd floor of this boutique building</p>
-            <p><i class="fas fa-bed text-white me-2"></i>Bedrooms</p>
-            <p> <i class="fas fa-bath me-2"></i>Bathrooms</p>
-            <p class="text-white"><i class="fas fa-dollar-sign me-2 text-white"></i>Rwf 100,000</p>
-            <iframe class="mt-3" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15949.877336139529!2d30.12427405!3d-1.9661770499999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2srw!4v1629969202800!5m2!1sen!2srw" width="100%" height="36%"allowfullscreen="" loading="lazy"></iframe>
-            <a class="btn text-white"style={{backgroundColor:"#ED4C5C"}}data-bs-toggle="modal" data-bs-target="#staticBackdrop">Request</a>    
-       </div>
-       <div class="col-sm">
-       
-       </div>
-</div>
-
-<div class="row mt-5 ">
-  <div class="col-sm-8">
-  <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel">
-<div class="carousel-inner">
- <div class="carousel-item active">
-   <img src={properties[1].thumbnail} class="d-block w-100" alt="..."/>
- </div>
- <div class="carousel-item">
-   <img src={properties[1].thumbnail}class="d-block w-100" alt="..."/>
- </div>
- <div class="carousel-item">
-   <img src={properties[1].thumbnail} class="d-block w-100" alt="..."/>
- </div>
-</div>
-<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
- <span class="visually-hidden">Previous</span>
-</button>
-<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
- <span class="carousel-control-next-icon" aria-hidden="true"></span>
- <span class="visually-hidden">Next</span>
-</button>
-</div>
-  </div>
-  <div class="col-sm-4">
-       <h2 class="text-white">House 1</h2><br/>
-       
-       <p class="text-secondary">This exceptional residence is one of only four homes in this magnificent double 
- 
-            square feet of single-level living on the 3rd floor of this boutique building</p>
-            <p><i class="fas fa-bed text-white me-2"></i>Bedrooms</p>
-            <p> <i class="fas fa-bath me-2"></i>Bathrooms</p>
-            <p class="text-white"><i class="fas fa-dollar-sign me-2 text-white"></i>Rwf 100,000</p>
-            <iframe class="mt-3" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15949.877336139529!2d30.12427405!3d-1.9661770499999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2srw!4v1629969202800!5m2!1sen!2srw" width="100%" height="36%" allowfullscreen="" loading="lazy"></iframe>
-            <a class="btn text-white"style={{backgroundColor:"#ED4C5C"}}data-bs-toggle="modal" data-bs-target="#staticBackdrop">Request</a>         </div>
-      
-</div>
-
-         </div>
- </div>
-       
-
-
-{/*modal*/}
-
-
-
-<div className="modal modal2 fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div className="modal-dialog modal-dialog2">
-    <div className="modal-content modal-content2">
-   
-      <div className="modal-body">
-   <h4>Landlord Phone Number <br/><br/></h4> 
-   <i className="bi bi-telephone-fill"></i> +250782251506
-      </div>
-      <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-    
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-         
-       </div>
- 
-  
-  </div>
-  
-  
-  : <h1 className="text-danger text-center  loading-text">Please wait..</h1>
-  
-  
-  }
-  
-  
-      </div>
-    }
-  
-  }
-  
-  export default RentalsTenant;
-  
-  
-  
+    )
+}

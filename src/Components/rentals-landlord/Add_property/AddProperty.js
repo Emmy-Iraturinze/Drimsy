@@ -18,9 +18,11 @@ import Header from '../../Header/Header';
 
 const validationSchema = yup.object({
 
-  email: yup.string().required(),
- 
-
+ usage: yup.string().required(),
+ name: yup.string().required(),
+ rent_amount: yup.string().required(), 
+ bedrooms: yup.string().required(), 
+ bathrooms: yup.string().required(), 
 });
 
 
@@ -49,12 +51,20 @@ export function AddProperty() {
         
         formik.resetForm();
 
-      alert("You have successfully Logged in")
+     
       }
   };
 
   const formik = useFormik({
-    initialValues: { email: "", password: "" ,application_id:"6aa89518-bcf4-4765-9520-1ec564a1cf32"},
+    initialValues: {
+      name: "",
+    usage: "" ,
+    rent_amount:"",
+    bedrooms:"",
+    other_amenities:"",
+    country:"",
+    state:"",
+    region:"",},
     validateOnBlur: true,
     onSubmit,
     validationSchema: validationSchema,
@@ -64,7 +74,7 @@ export function AddProperty() {
      
           <div>
               <Header/>
-               <section class="h-100 h-custom" style={{background:"#8fc4b7"}}>
+               <section class="h-100 h-custom" >
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-lg-8 col-xl-6">
@@ -74,10 +84,10 @@ export function AddProperty() {
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Upload Your House</h3>
 
 
-            <form onClick={formik.handleSubmit} class="row g-3">
+            <form onSubmit={formik.handleSubmit} class="row g-3">
   
   <div class="col-md-6">
-    <label for="inputEmail4" class="form-label"> Name</label>
+    <label for="inputEmail4" class="form-label text-muted"> Name</label>
     <input type="text"
      class="form-control"
      
@@ -89,7 +99,7 @@ export function AddProperty() {
   </div>
 
   <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Usage</label>
+    <label for="inputPassword4" class="form-label text-muted">Usage</label>
     <input type="text"
      class="form-control"
       id="password"
@@ -102,7 +112,7 @@ export function AddProperty() {
   </div>
 
   <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Rent_amount</label>
+    <label for="inputEmail4" class="form-label text-muted">Rent_amount</label>
     <input type="number" 
     class="form-control"
      id="inputEmail4"
@@ -114,7 +124,7 @@ export function AddProperty() {
   </div>
 
   <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Bedrooms</label>
+    <label for="inputPassword4" class="form-label text-muted">Bedrooms</label>
     <input type="number"
      class="form-control" 
      id="inputPassword4"
@@ -125,7 +135,7 @@ export function AddProperty() {
   </div>
 
   <div class="col-12">
-    <label for="inputPassword4" class="form-label">Bathrooms</label>
+    <label for="inputPassword4" class="form-label text-muted">Bathrooms</label>
     <input type="number"
      class="form-control" 
      id="inputPassword4" 
@@ -135,7 +145,7 @@ export function AddProperty() {
      {formik.touched.bathrooms && formik.errors.bathrooms ? <small class="text-danger" > {formik.errors.bathrooms}</small> : null} 
   </div>
   <div class="col-12">
-    <label for="inputPassword4" class="form-label">country</label>
+    <label for="inputPassword4" class="form-label text-muted">country</label>
     <input type="text"
      class="form-control" 
      id="inputPassword4" 
@@ -148,7 +158,7 @@ export function AddProperty() {
 
 
   <div class="col-md-6">
-    <label for="inputAddress2" class="form-label">state</label>
+    <label for="inputAddress2" class="form-label text-muted">state</label>
     <input type="text"
      class="form-control" 
      id="inputAddress2" 
@@ -161,7 +171,7 @@ export function AddProperty() {
   </div>
 
   <div class="col-md-6">
-    <label for="inputCity" class="form-label">Region</label>
+    <label for="inputCity" class="form-label text-muted">Region</label>
     <input type="text"
      class="form-control"
       id="inputCity"
@@ -172,22 +182,22 @@ export function AddProperty() {
      {formik.touched.region && formik.errors.region? <small class="text-danger" > {formik.errors.region}</small> : null} 
   </div>
 
-  <div class="form-floating">
-  <textarea class="form-control" 
-  placeholder="Leave a comment here" 
-  id="floatingTextarea"
-  onChange={formik.handleChange}
-  onBlur={formik.handleBlur}
-  value={formik.values.other_amenities}/>
-  {formik.touched.other_amenities && formik.errors.other_amenities? <small class="text-danger" > {formik.errors.other_amenities}</small> : null} 
-  
-
-  <label for="floatingTextarea">other_amenities</label>
-</div>
+  <div class="col-md-6">
+    <label for="other_omenities" class="form-label text-muted">other_amenities</label>
+    <input type="text"
+     class="form-control"
+      id="inputCity"
+       name="other_omenities"
+       onChange={formik.handleChange}
+     onBlur={formik.handleBlur}
+     value={formik.values.other_amenities}/>
+     {formik.touched.other_amenities && formik.errors.other_amenities? <small class="text-danger" > {formik.errors.other_amenities}</small> : null} 
+  </div>
 
   <div class="col-md-6">
-    <label for="inputCity" class="form-label">Upload photos</label>
+    <label for="inputCity" class="form-label text-muted">Upload photos</label>
     <input type="file"
+    placeholder=""
      class="form-control"
       id="inputCity"
        name="photo"/>

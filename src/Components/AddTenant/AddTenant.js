@@ -1,55 +1,75 @@
-/* eslint-disable react/jsx-no-duplicate-props */
-/* eslint-disable jsx-a11y/iframe-has-title */
-/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import {Link} from 'react-router-dom'
-import'./AddTenant.css';
+/* eslint-disable jsx-a11y/alt-text */
+import React from 'react'
+import { useFormik } from 'formik'
+import { Link } from 'react-router-dom'
+import './AddTenant.css'
+import AuthApi from '../../AuthApi';
+import Cookies from 'js-cookie';
+import axios from 'axios';
+import { useState } from 'react';
+import * as yup from 'yup'
+import Header from '../Header/Header';
+import Footer from '../footer/Footer';
+      
+
+/* eslint-disable no-unused-vars */
 
 
 
-function AddTenant(){
+const PASSWORD_REGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+const validationSchema = yup.object({
+
+
+});
+
+
+
+  
+  
+export function AddTenant () {
+  const Auth = React.useContext(AuthApi)
+
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
+
+
+  const onSubmit = async (values) => {
+    setError(null);
+    const response = await axios
+      .post("https://endpoint.drimsy.com/rentals", values)
+      .catch((err) => {
+        if (err && err.response) setError(err.response.data.message);
+      });
+
+      if (response && response.data) {
+        setError(null);
+        setSuccess(response.data.message);
+        
+        formik.resetForm();
+
+      alert("Tenant Added successfully")
+      }
+  };
+
+  const formik = useFormik({
+    initialValues: { 
+     tenant_id: "4017ef4e-682c-4cd5-bcd3-1f083cbc46e8",
+     property_id: "10b2d68e-027f-4744-803a-2c20326e7c75"
+     },
+    validateOnBlur: true,
+    onSubmit,
+    validationSchema: validationSchema,
+  });
+ 
+
 return (
 
-<div class="container-fluid  bg-dark">
+<div class="container">
 <div>
-            <nav class="navbar navbar-expand-lg navbar-light">
-  <div class="container-fluid">
-  <h1 class="navbar-brand text-white " href="#"><img src="https://api.freelogodesign.org/files/95d71dec2e024c6db036e3fb73e35817/thumb/logo_200x200.png?v=637652951930000000"/></h1>
-    <button class="navbar-toggler btn-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-      
-      <li>   
-
-   
-  
-    </li>
-      <li class="nav-item me-2">
-       <Link to="/dashboard"style={{textDecoration:"none"}}> <a class="nav-link btn7" href="#">HOME</a></Link>
-        </li>
-      
-   
-        <li class="nav-item me-2">
-        <a class="nav-link" href="#"data-bs-toggle="modal" data-bs-target="#exampleModal">SUBSCRIBE</a>
-        </li>
-        <li class="nav-item me-2">
-        <Link to="/rentals" style={{textDecoration:"none"}}> <a class="nav-link">MY RENTALS</a></Link>
-        </li>
-
-     
-        <li class="nav-item me-2">
-<Link to="/login" class="link" style={{textDecoration:"none"}}> <a class="nav-link btn btn-primary " >LOG OUT</a></Link>
-        </li>
-
-      
-      </ul>
-
-    </div>
-  </div>
-</nav>
+<Header/>
             </div>
+            
         
             <section id="gridGallery">
   <div class="container">
@@ -154,7 +174,7 @@ return (
        <div class="container mt-5">
             <div class="row">
                  <div id="col-li" class="col">
-                 <h1 class="text-white">Comfy Apartement</h1>
+                 <h2 class="text-white">Comfy Apartement</h2>
        <p class="text-secondary">This exceptional residence is one of only four homes in this 
             magnificent double townhouse on the second block of Commonwealth Avenue. 
              The elevator, shared with only three other families, opens directly 
@@ -166,23 +186,45 @@ the house fully integrates smart-house technology and is in new construction con
                    <p class="text-muted"><i class="fas fa-sink me-2" ></i><br/>2 Bedrooms</p>
                 <p class="text-muted"><i class="fas fa-sink me-2" ></i><br/>3 Bathrooms</p>
                    <p class="text-muted"><i class="fas fa-dollar-sign me-2"></i><br/>Rwf 100,000</p>
-                   <h4 class="text-white mt-5">Add tenant number <i class="bi bi-plus-circle"></i></h4>
+                  
                    <div class="row mt-4" >
  
-  <div class="col">
-    <input type="text" class="form-control" placeholder="Phone" id="TenantPhone"/>
-  </div>
-  <div class="col-12 mt-2">
-    <button type="submit" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal"  >+Add</button>
-  </div>
+                   <div class="form-body">
+        <div class="row">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Add Tenant</h3>
+                        <p>Search your new Tenant and Add them</p>
+                     
+                        <form  onSubmit={formik.handleSubmit}class="requires-validation" novalidate>
+
+                            <div class="col-md-12">
+                               <input class="form-control" type="text" name="name" placeholder="Enter National ID" required/>
+                               <div class="valid-feedback">Username field is valid!</div>
+                               <div class="invalid-feedback">Username field cannot be blank!</div>
+                            </div>
+
+                   
+
+                            <div class="form-button mt-3">
+                                <button id="submit" type="submit" class="btn btn-primary">Add Tenant</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </div>
 
                  </div>
               
                  <div class="col">
-                      <h1 class="text-white mb-3">Location</h1>
-                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.4469944162834!2d30.040164314171935!3d-1.9755053373220381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca5955ec19b33%3A0xdf1cc8655e0cc320!2sKigali%20Baobab%20Hotel!5e0!3m2!1sen!2srw!4v1630416716526!5m2!1sen!2srw" width="105%" height="77%" ></iframe>
+                      <h2 class="text-white mb-3">Location</h2>
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.4469944162834!2d30.040164314171935!3d-1.9755053373220381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca5955ec19b33%3A0xdf1cc8655e0cc320!2sKigali%20Baobab%20Hotel!5e0!3m2!1sen!2srw!4v1630416716526!5m2!1sen!2srw" width="105%" height="20%" ></iframe>
                  </div>
                 
             </div>
@@ -214,7 +256,7 @@ the house fully integrates smart-house technology and is in new construction con
 <hr/>
 
 
-
+<Footer/>
 </div>
 
 );

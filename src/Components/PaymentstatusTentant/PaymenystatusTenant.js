@@ -1,48 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import {Link} from 'react-router-dom'
+import Header from '../Header/Header';
 
 
-function PaymentstatusTenant(){
+function PaymentstatusTenant()
+
+{
      return(
           <div>
-                 < div class="container text-center">
-             <nav class="navbar navbar-expand-lg navbar-light nav1">
-  <div class="container-fluid">
-  <h1 class="navbar-brand text-white " href="#"><img src="https://api.freelogodesign.org/files/95d71dec2e024c6db036e3fb73e35817/thumb/logo_200x200.png?v=637652951930000000"/></h1>
-    <button class="navbar-toggler btn-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-      
-      <li>   
+                
+ <Header/>
 
-   
-  
-    </li>
-      <li class="nav-item me-2">
-      <Link to="/" style={{textDecoration:"none"}}>  <a class="nav-link btn1" href="#">HOME</a></Link>
-        </li>
-
-        <li class="nav-item me-2">
-        <Link to="/rental-pay" style={{textDecoration:"none"}}> <a class="nav-link">PAY RENT</a></Link>
-        </li>
-        <li class="nav-item me-2">
-        <Link to="/status-tenant" style={{textDecoration:"none"}}> <a class="nav-link">PAYMENT STATUS</a></Link>
-        </li>
-
-     
-        <li class="nav-item me-2">
-<Link to="/login" class="link"style={{textDecoration:"none"}}> <a class="nav-link btn btn-primary " >Login/Register</a></Link>
-        </li>
-
-      
-      </ul>
-
-    </div>
-  </div>
-</nav>
-  </div>
 
 <div class=" section1 container " style={{marginTop:"200px"}}>
 
