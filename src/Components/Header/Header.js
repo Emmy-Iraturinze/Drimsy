@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from "axios";
 import { defaults } from "js-cookie";
-import './header.scss'
+
 import AuthApi from '../../AuthApi';
 import Cookies from 'js-cookie';
 import myVideo from '../../images/final_614b50072c522c00a150160c_705395.mp4'
@@ -50,37 +50,49 @@ const Header = () => {
     </div>
   </div>
 </nav> */}
-<input type="checkbox" id="menu-toggle" checked/>
-<div class="menu dflex">
-  <div id="logoCSS3" class="text-center">
-    <i class="fa fa-css3"></i>
+ <input type="checkbox" id="burger-toggle" className="text-white" style={{color:"white",position:"absolute"}}/>
+<label for="burger-toggle" class="burger-menu text-white">
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+</label>
+<div class="menu" style={{zIndex:"1"}}>
+  <div class="menu-inner">
+    <ul class="menu-nav">
+   
+      <li class="menu-nav-item"><Link to="/dashboard"><a class="menu-nav-link" href="#"><span>
+            <div className="text-white"><span class="me-5" >HOME</span></div>
+          </span></a></Link></li>
+          <li class="menu-nav-item"><a class="menu-nav-link"  href="#"><span>
+            <div className="text-white"><span class="me-5"  >SUBSCRIBE</span></div>
+          </span></a></li>
+          <li class="menu-nav-item"><Link to="/rentals"><a class="menu-nav-link"  href="#"><span >
+            <div className="text-white" ><span  class="me-5" >RENTALS</span></div>
+          </span></a></Link></li>
+   
+          <li class="menu-nav-item me-2" ><Link to="/rental-pay"><a class="menu-nav-link" href="#"><span>
+            <div className="text-white"><span class="me-5"  >PAY</span></div>
+          </span></a></Link></li>
+          <li class="menu-nav-item me-2" ><Link to="/status-tenant"><a class="menu-nav-link" href="#"><span>
+            <div className="text-white"><span class="me-5"  >STATUS</span></div>
+          </span></a></Link></li>
+          <li class="menu-nav-item"><Link to="/add-prop"><a class="menu-nav-link" href="#"><span>
+            <div className="text-white"><span  class="me-5" >PROPERTY</span></div>
+          </span></a></Link></li>
+          <li class="menu-nav-item">    <div class="d-flex flex-column sim">   <li class="nav-item "  style={{listStyle:"none"}}>
+        <button class="btn  text-white me-2 " onClick={handleOnClick}>
+      LOG OUT
+         </button>
+      
+         <span></span>
+        </li> </div></li>
+     
+      
+    </ul>
+
   </div>
-  <div class="elements-container dflex">
-    <a class="element" href="#">
-        <i class="fa fa-leaf"></i> Lorem ipsum
-      </a>
-    <a class="element" href="#">
-        <i class="fa fa-money"></i> Dolor sit amet
-      </a>
-    <a class="element" href="#">
-        <i class="fa fa-gavel"></i> Consectetur adipiscing
-      </a>
-    <a class="element" href="#">
-        <i class="fa fa-cogs"></i> Config
-      </a>
-  </div>
-  <div class="menu-container-btn">
-    <div class="menu-toggle-btn">
-      <label class="menu-btn text-center" for="menu-toggle">
-          <i class="fa fa-close"></i>
-          <i class="fa fa-bars"></i>
-        </label>
-    </div>
-  </div>
-</div>
- 
 </div> 
-         
+          </div>
      )
 }
 

@@ -84,7 +84,7 @@ export function AddProperty() {
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Upload Your House</h3>
 
 
-            <form onSubmit={formik.handleSubmit} class="row g-3">
+            <form onClick={formik.handleSubmit} class="row g-3">
   
   <div class="col-md-6">
     <label for="inputEmail4" class="form-label text-muted"> Name</label>

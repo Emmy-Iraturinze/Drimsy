@@ -31,6 +31,7 @@ import Submenu from './Components/submenu/Submenu';
 import SingleHouse from './Components/singleHouse/SingleHouse';
 import dashApi from './Components/dashApi/DashApi';
 import Searchbox from './Components/Dashboard/searchbar/Searchbox';
+import Prop from './Components/rentals-landlord/Add_property/Prop';
 function App() {
   
 
@@ -88,6 +89,10 @@ const Routes = ()=> {
   <Public/>
 </Route>
 
+
+<Route path="/prop">
+  <Prop/>
+</Route>
 <Route path="/search">
   <Searchbox/>
 </Route>
