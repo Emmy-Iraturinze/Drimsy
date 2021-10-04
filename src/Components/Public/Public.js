@@ -10,13 +10,15 @@ import Cookies from 'js-cookie';
 import {Link} from 'react-router-dom'
 import { useState, useEffect} from 'react';
 
+
 import Footer from "../footer/Footer";
 import Header from "../Header/Header";
 import Switcher from "../switcher/Switcher";
 import Submenu from "../submenu/Submenu";
 import Dashboardapi from "../DashboardApi/Dashboardapi";
-import { PopupHeader } from "semantic-ui-react";
-import Publicheader from "../Header/Publicheader";
+import Glass from "../glassmorphism/Glass";
+
+import Hero from "../herosection/Hero";
 
 
 
@@ -24,7 +26,7 @@ import Publicheader from "../Header/Publicheader";
 
 
 
-const Public = () =>{
+const Dashboard = () =>{
 
     const [apiData, setApiData] = useState([]);
     useEffect(() => {
@@ -69,11 +71,7 @@ const Public = () =>{
        <div class="">
 
 
-<div className="container">
-  
-<Publicheader/>
 
-</div>
 
 
 
@@ -119,14 +117,16 @@ const Public = () =>{
    </div>
    
     {/*image  hero background  */}
+    <Hero/>
     
    <div className="">
    <div class="big-image">
        
     
   <div class="overlay">
+  <Header/>
     <div className="row">
-      <div className="col-12 container" style={{marginTop:"10%"}}>
+      <div className="col-12 container" >
       {/* <h1 class="text-white fw-bolder text-center  display-5 mt-5"  style={{fontWeight:"900!important"}}>Exclusive pool. Ground coffee. Coffee pods.</h1> */}
            {/* <div className="row " style={{marginLeft:"100px"}}>
 <p className="text-muted" style={{fontWeight:"lighter!important"}}>Studies show that productivity rises by 60% after drinking coffee.</p>
@@ -143,19 +143,15 @@ const Public = () =>{
     <button class="btn-search"><i class="fas fa-search"></i></button>
     <input type="text" class="input-search" placeholder="Type to Search..."onChange={(e) => searchData(e.target.value)}/>
   </div> */}
-
-
+{/* 
 <div class="glass-panel">
   <h1 className="mb-5">Drimsy    </h1>
-  <div class="search-box align-item-center ml-5">
-    <button class="btn-search"><i class="fas fa-search text-center "></i></button>
-    <input type="text" class="input-search" placeholder="Type to Search..."onChange={(e) => searchData(e.target.value)}/>
-  </div> 
+
   <div class="glass-toolbar text-center">
     <button class="glass-button">Find More</button>
     <a  target="_blank" class="glass-button">Enjoy More</a>
   </div>
-</div>
+</div> */}
       </div>
 
 
@@ -202,7 +198,7 @@ const Public = () =>{
 
 
      <div className="container">
-     <Switcher/>
+    
      <div className="row">
      <h3 className="text-white mb-4 mt-5">Featured<br/> Property</h3>
         <p className="text-muted mb-4">Find the latest homes for sale, <br/>property news & real estate market data</p>
@@ -360,4 +356,4 @@ const Public = () =>{
      )
    }
 
-   export default Public;
+   export default Dashboard;
