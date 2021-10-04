@@ -16,7 +16,7 @@ const Submenu = () => {
       <div class="navbar-nav">
         <a class="nav-link active"style={{textDecoration:"none"}} aria-current="page">Pay Rent</a>
         <a class="nav-link" style={{textDecoration:"none"}} aria-current="page"data-bs-toggle="modal" data-bs-target="#exampleModal" >Subscribe</a>
-        <a class="nav-link">Features</a>
+        <Link to="/rentals2" style={{textDecoration:"none"}}><a class="nav-link">Search</a></Link>
        <Link to="/add-tenant" style={{textDecoration:"none"}}><a class="nav-link">Add tenant</a></Link>
       </div>
     </div>

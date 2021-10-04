@@ -17,7 +17,9 @@ import Switcher from "../switcher/Switcher";
 import Submenu from "../submenu/Submenu";
 import Dashboardapi from "../DashboardApi/Dashboardapi";
 import Glass from "../glassmorphism/Glass";
-import Searchbox from "./searchbar/Searchbox";
+import Search from "./searchbar/Searchbox";
+import Hero from "../herosection/Hero";
+
 
 
 
@@ -69,11 +71,7 @@ const Dashboard = () =>{
        <div class="">
 
 
-<div className="container">
-  
-<Header/> 
 
-</div>
 
 
 
@@ -119,6 +117,7 @@ const Dashboard = () =>{
    </div>
    
     {/*image  hero background  */}
+    <Hero/>
     
    <div className="">
    <div class="big-image">
@@ -126,7 +125,7 @@ const Dashboard = () =>{
     
   <div class="overlay">
     <div className="row">
-      <div className="col-12 container" style={{marginTop:"10%"}}>
+      <div className="col-12 container" >
       {/* <h1 class="text-white fw-bolder text-center  display-5 mt-5"  style={{fontWeight:"900!important"}}>Exclusive pool. Ground coffee. Coffee pods.</h1> */}
            {/* <div className="row " style={{marginLeft:"100px"}}>
 <p className="text-muted" style={{fontWeight:"lighter!important"}}>Studies show that productivity rises by 60% after drinking coffee.</p>
@@ -143,19 +142,15 @@ const Dashboard = () =>{
     <button class="btn-search"><i class="fas fa-search"></i></button>
     <input type="text" class="input-search" placeholder="Type to Search..."onChange={(e) => searchData(e.target.value)}/>
   </div> */}
-
-
+{/* 
 <div class="glass-panel">
   <h1 className="mb-5">Drimsy    </h1>
-  <div class="search-box align-item-center ml-5">
-    <button class="btn-search"><i class="fas fa-search text-center "></i></button>
-    <input type="text" class="input-search" placeholder="Type to Search..."onChange={(e) => searchData(e.target.value)}/>
-  </div> 
+
   <div class="glass-toolbar text-center">
     <button class="glass-button">Find More</button>
     <a  target="_blank" class="glass-button">Enjoy More</a>
   </div>
-</div>
+</div> */}
       </div>
 
 
@@ -202,7 +197,7 @@ const Dashboard = () =>{
 
 
      <div className="container">
-     <Switcher/>
+    
      <div className="row">
      <h3 className="text-white mb-4 mt-5">Featured<br/> Property</h3>
         <p className="text-muted mb-4">Find the latest homes for sale, <br/>property news & real estate market data</p>

@@ -30,6 +30,7 @@ import Dashboardapi from './Components/DashboardApi/Dashboardapi';
 import Submenu from './Components/submenu/Submenu';
 import SingleHouse from './Components/singleHouse/SingleHouse';
 import dashApi from './Components/dashApi/DashApi';
+import Searchbox from './Components/Dashboard/searchbar/Searchbox';
 function App() {
   
 
@@ -85,6 +86,10 @@ const Routes = ()=> {
       <Switch>
       <Route exact path="/">
   <Public/>
+</Route>
+
+<Route path="/search">
+  <Searchbox/>
 </Route>
  <ProtectedRoute path="/dashboard" auth={ Auth.auth} component={Dashboard}/>
 
