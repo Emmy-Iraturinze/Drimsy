@@ -83,7 +83,9 @@ const Routes = ()=> {
     <div>
   
       <Switch>
- 
+      <Route exact path="/">
+  <Public/>
+</Route>
  <ProtectedRoute path="/dashboard" auth={ Auth.auth} component={Dashboard}/>
 
 
