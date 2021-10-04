@@ -71,6 +71,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <p class="text-center fw-bolder mb-0 mt-5">Copyright<i class="far fa-copyright"></i> Drimsy 2021</p>
     </footer>
 
           </div>

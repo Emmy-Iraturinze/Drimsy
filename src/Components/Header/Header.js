@@ -63,15 +63,16 @@ const Header = () => {
       <li class="menu-nav-item"><Link to="/dashboard"><a class="menu-nav-link" href="#"><span>
             <div className="text-white"><span class="me-5" >HOME</span></div>
           </span></a></Link></li>
-          <li class="menu-nav-item"><a class="menu-nav-link" aria-current="page"data-bs-toggle="modal" data-bs-target="#exampleModal"  href="#"><span>
-            <div className="text-white"><span class="me-5"  >SUBSCRIBE</span></div>
-          </span></a></li>
+ 
           <li class="menu-nav-item"><Link to="/rentals"><a class="menu-nav-link"  href="#"><span >
             <div className="text-white" ><span  class="me-5" >RENTALS</span></div>
           </span></a></Link></li>
    
           <li class="menu-nav-item me-2" ><Link to="/rental-pay"><a class="menu-nav-link" href="#"><span>
             <div className="text-white"><span class="me-5"  >PAY</span></div>
+          </span></a></Link></li>
+          <li class="menu-nav-item me-2" ><Link to="/status-tenant"><a class="menu-nav-link" href="#"><span>
+            <div className="text-white"><span class="me-5"  >STATUS</span></div>
           </span></a></Link></li>
           <li class="menu-nav-item"><Link to="/add-prop"><a class="menu-nav-link" href="#"><span>
             <div className="text-white"><span  class="me-5" >PROPERTY</span></div>

@@ -6,18 +6,33 @@ import { defaults } from "js-cookie";
 import React ,{ Component } from "react";
 import AuthApi from '../../AuthApi';
 import Cookies from 'js-cookie';
-import myVideo from '../../images/final_614b50072c522c00a150160c_705395.mp4'
+
 import {Link} from 'react-router-dom'
 import { useState, useEffect} from 'react';
 import './Dashboard.css'
 import './dash.scss'
 import Footer from "../footer/Footer";
 import Header from "../Header/Header";
+import Switcher from "../switcher/Switcher";
+import Submenu from "../submenu/Submenu";
+import Dashboardapi from "../DashboardApi/Dashboardapi";
+import Glass from "../glassmorphism/Glass";
+import Searchbox from "./searchbar/Searchbox";
+
+
+
 
 
 
 const Dashboard = () =>{
 
+    const [apiData, setApiData] = useState([]);
+    useEffect(() => {
+        axios.get(`https://authify-ms.romalice.com/user`)
+            .then((getData) => {
+                setApiData(getData.data);
+            })
+    }, [])
      const Auth = React.useContext(AuthApi)
    
      const handleOnClick=() =>{
@@ -55,7 +70,9 @@ const Dashboard = () =>{
 
 
 <div className="container">
-<Header/>
+  
+<Header/> 
+
 </div>
 
 
@@ -105,36 +122,45 @@ const Dashboard = () =>{
     
    <div className="">
    <div class="big-image">
-     
+       
+    
   <div class="overlay">
     <div className="row">
-      <div className="col-12">
-      <h1 class="text-white fw-bolder  display-1" >Welcom to Drimsy </h1>
-      <div class="search-box align-item-center mt-4">
+      <div className="col-12 container" style={{marginTop:"10%"}}>
+      {/* <h1 class="text-white fw-bolder text-center  display-5 mt-5"  style={{fontWeight:"900!important"}}>Exclusive pool. Ground coffee. Coffee pods.</h1> */}
+           {/* <div className="row " style={{marginLeft:"100px"}}>
+<p className="text-muted" style={{fontWeight:"lighter!important"}}>Studies show that productivity rises by 60% after drinking coffee.</p>
+               <div className="col">
+               <button class="btn text-white mt-3 border-3 radius-0"  style={{backgroundColor:"rgb(214, 22, 30)"}}>CHECK SOME</button>
+               </div>
+               <div className="col">
+               <button class="btn text-white mt-3 btn-outline-light border-3 ">GET STARTED</button>
+               
+               </div>
+           </div> */}
+     
+      {/* <div class="search-box align-item-center mt-4">
     <button class="btn-search"><i class="fas fa-search"></i></button>
     <input type="text" class="input-search" placeholder="Type to Search..."onChange={(e) => searchData(e.target.value)}/>
-  </div>
+  </div> */}
 
 
-
-      </div>
-      {/* <div className="col">
-      <div class="container">
-  <div class="carousel">
-    <div class="carousel__face"><span></span></div>
-    <div class="carousel__face"><span></span></div>
-    <div class="carousel__face"><span></span></div>
-    <div class="carousel__face"><span></span></div>
-    <div class="carousel__face"><span></span></div>
-    <div class="carousel__face"><span></span></div>
-    <div class="carousel__face"><span></span></div>
-    <div class="carousel__face"><span></span></div>
-    <div class="carousel__face"><span></span></div>
+<div class="glass-panel">
+  <h1 className="mb-5">Drimsy    </h1>
+  <div class="search-box align-item-center ml-5">
+    <button class="btn-search"><i class="fas fa-search text-center "></i></button>
+    <input type="text" class="input-search" placeholder="Type to Search..."onChange={(e) => searchData(e.target.value)}/>
+  </div> 
+  <div class="glass-toolbar text-center">
+    <button class="glass-button">Find More</button>
+    <a  target="_blank" class="glass-button">Enjoy More</a>
   </div>
 </div>
-      </div> */}
+      </div>
+
+
     </div>
-    
+    {/* <Submenu/> */}
   </div>
 </div>
 
@@ -176,6 +202,7 @@ const Dashboard = () =>{
 
 
      <div className="container">
+     <Switcher/>
      <div className="row">
      <h3 className="text-white mb-4 mt-5">Featured<br/> Property</h3>
         <p className="text-muted mb-4">Find the latest homes for sale, <br/>property news & real estate market data</p>
@@ -320,191 +347,8 @@ const Dashboard = () =>{
    <div id="rentals" className="container">
         <h2 className="text-white mb-5 mt-5">Rentals</h2>
         <p className="text-muted mb-4">Find the latest homes for sale, <br/>property news & real estate market data</p>
-   
-        <div class="row">
-    
-            <div class="col-md-3">
-                <div class="card-sl">
-                    <div class="card-image">
-                        <img
-                            src="https://images.unsplash.com/photo-1560184897-ae75f418493e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cmVhbCUyMGVzdGF0ZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                    </div>
-
-                    <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
-                    <div class="card-heading">
-                        Audi Q8
-                    </div>
-                    <div class="card-text">
-                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
-                    </div>
-                    <div class="card-text">
-                        $67,400
-                    </div>
-                    <a href="#" class="card-button bg-danger"> Request</a>
-                    <a href="#" class="card-button mt-4 "> view details</a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card-sl">
-                    <div class="card-image">
-                        <img
-                            src="https://images.unsplash.com/photo-1560184897-ae75f418493e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cmVhbCUyMGVzdGF0ZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                    </div>
-
-                    <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
-                    <div class="card-heading">
-                        Audi Q8
-                    </div>
-                    <div class="card-text">
-                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
-                    </div>
-                    <div class="card-text">
-                        $67,400
-                    </div>
-                    <a href="#" class="card-button bg-danger"> Request</a>
-                    <a href="#" class="card-button mt-4 "> view details</a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card-sl">
-                    <div class="card-image">
-                        <img
-                            src="https://images.unsplash.com/photo-1560184897-ae75f418493e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cmVhbCUyMGVzdGF0ZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                    </div>
-
-                    <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
-                    <div class="card-heading">
-                        Audi Q8
-                    </div>
-                    <div class="card-text">
-                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
-                    </div>
-                    <div class="card-text">
-                        $67,400
-                    </div>
-                    <a href="#" class="card-button bg-danger"> Request</a>
-                    <a href="#" class="card-button mt-4 "> view details</a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card-sl">
-                    <div class="card-image">
-                        <img
-                            src="https://images.unsplash.com/photo-1560184897-ae75f418493e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cmVhbCUyMGVzdGF0ZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                    </div>
-
-                    <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
-                    <div class="card-heading">
-                        Audi Q8
-                    </div>
-                    <div class="card-text">
-                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
-                    </div>
-                    <div class="card-text">
-                        $67,400
-                    </div>
-                    <a href="#" class="card-button bg-danger"> Request</a>
-                    <a href="#" class="card-button mt-4 "> view details</a>
-                </div>
-            </div>
-        </div>  
-        <div className="row">
-
-        <div class="row">
-            <div class="col-md-3">
-                <div class="card-sl">
-                    <div class="card-image">
-                        <img
-                            src="https://images.unsplash.com/photo-1560184897-ae75f418493e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cmVhbCUyMGVzdGF0ZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                    </div>
-
-                    <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
-                    <div class="card-heading">
-                        Audi Q8
-                    </div>
-                    <div class="card-text">
-                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
-                    </div>
-                    <div class="card-text">
-                        $67,400
-                    </div>
-                    <a href="#" class="card-button bg-danger"> Request</a>
-                    <a href="#" class="card-button mt-4 "> view details</a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card-sl">
-                    <div class="card-image">
-                        <img
-                            src="https://images.unsplash.com/photo-1560184897-ae75f418493e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cmVhbCUyMGVzdGF0ZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                    </div>
-
-                    <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
-                    <div class="card-heading">
-                        Audi Q8
-                    </div>
-                    <div class="card-text">
-                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
-                    </div>
-                    <div class="card-text">
-                        $67,400
-                    </div>
-                    <a href="#" class="card-button bg-danger"> Request</a>
-                    <a href="#" class="card-button mt-4 "> view details</a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card-sl">
-                    <div class="card-image">
-                        <img
-                            src="https://images.unsplash.com/photo-1560184897-ae75f418493e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cmVhbCUyMGVzdGF0ZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                    </div>
-
-                    <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
-                    <div class="card-heading">
-                        Audi Q8
-                    </div>
-                    <div class="card-text">
-                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
-                    </div>
-                    <div class="card-text">
-                        $67,400
-                    </div>
-                    <a href="#" class="card-button bg-danger"> Request</a>
-                    <a href="#" class="card-button mt-4 "> view details</a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card-sl">
-                    <div class="card-image">
-                        <img
-                            src="https://images.unsplash.com/photo-1560184897-ae75f418493e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cmVhbCUyMGVzdGF0ZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                    </div>
-
-                    <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
-                    <div class="card-heading">
-                        Audi Q8
-                    </div>
-                    <div class="card-text">
-                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
-                    </div>
-                    <div class="card-text">
-                        $67,400
-                    </div>
-                    <a href="#" class="card-button bg-danger"> Request</a>
-                    <a href="#" class="card-button mt-4 "> view details</a>
-                </div>
-            </div>
-            <Link to="/rentals2"><a className="btn btn-primary mt-3 "> more<i class="fas fa-arrow-right"></i></a></Link>
-        </div>  
-         
-                <div className="col">
-                
-    
-
-
-                  </div>  
-        </div>
+        <Dashboardapi/>
+      
    
    </div>
 

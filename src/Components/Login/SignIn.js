@@ -2,7 +2,7 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import { Link } from 'react-router-dom'
-
+import './Login.css'
 import AuthApi from '../../AuthApi';
 import Cookies from 'js-cookie';
 import axios from 'axios';
@@ -51,7 +51,7 @@ export function SignIn () {
         
         formik.resetForm();
 
-      alert("You have successfully Logged in")
+      alert("You have successfully Logged in! Kindly Click ok button to enjoy Drimsy")
       }
   };
 
@@ -63,48 +63,44 @@ export function SignIn () {
   });
  return(
           <div>
-                 <form onClick={formik.handleSubmit}>
-               <h2 class="sr-only">Login Form</h2>
-             
-               <div class="illustration "><img src="https://api.freelogodesign.org/files/95d71dec2e024c6db036e3fb73e35817/thumb/logo_200x200.png?v=637652951930000000"/></div>
-
-<div class="form-group">
-
-<input  class="form-control text-muted"
- type="email" name="email" 
- placeholder="Email"
- autoFocus
-      onChange={formik.handleChange}
+             <div class="login-box">
+  <h2>Login</h2>
+  <form onClick={formik.handleSubmit}>
+    <div class="user-box">
+      <input type="text"
+       name="email" 
+       required=""
+       autoFocus
+       onChange={formik.handleChange}
 onBlur={formik.handleBlur}
 value={formik.values.email}/>
-{formik.touched.email && formik.errors.email ? <small class="text-danger" > {formik.errors.email}</small> : null}
+{formik.touched.email && formik.errors.email? <small class="text-danger" > {formik.errors.email}</small> : null}
+      <label>Username</label>
+    </div>
+
+    <div class="user-box">
+      <input type="password"
+       name="password"
+        required=""
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.password}/>
+        {formik.touched.password && formik.errors.password? <small class="text-danger" > {formik.errors.password}</small> : null}
+      <label>Password</label>
+    </div>
+
+<a href="#" class="btn" type="">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    <button type="submit "class="btn btn1 text-white" onClick={handleOnClick} disabled={!formik.isValid} >Log In</button>
+    </a>
 
 
+  </form>
+<Link to="/SignUp"><p className="text-center text-muted mt-2">Don't have an account? Sign up</p></Link>
 </div>
-
-
-<div class="form-group">
-<input class="form-control text-muted"
- type="password" name="password" 
- placeholder="Password" 
-      onChange={formik.handleChange}
-onBlur={formik.handleBlur}
-value={formik.values.password}/>
-{formik.touched.password && formik.errors.password ? <small class="text-danger" > {formik.errors.password}</small> : null}
-
- </div>
-<div class="form-group">
-
-<button type="button" class="btn btn-primary btn-block" onClick={handleOnClick} disabled={!formik.isValid} >Log In</button>
-</div>
-
-<a href="#" class="forgot">Forgot your email or password?</a><br/>
-<Link to="/Signup">  <a class="forgot">Don't have an Account? </a></Link>
-             
-               </form>
-
-
-              
           </div>
      )
 }

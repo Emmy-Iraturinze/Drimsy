@@ -1,3 +1,6 @@
+
+
+
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
 $main-green: #79dd09 !default;
 $main-green-rgb-015: rgba(121, 221, 9, 0.1) !default;
@@ -17,7 +20,7 @@ $main-blue-rgb-015: rgba(0, 118, 189, 0.1) !default;
      --highlight-dark: hsl(230, 38%, 36%);
      --logo-width: 6em;
      --logo-offset: 1em;
-     --main-column-width: 25em;
+    
    }
    
    * {
@@ -28,6 +31,8 @@ $main-blue-rgb-015: rgba(0, 118, 189, 0.1) !default;
      }
    }
    
+  //switch scss
+    
    .app {
      position: relative;
      padding-left: .5em;
@@ -500,8 +505,6 @@ p {
    
    * {
      box-sizing: border-box;
-     padding: 0;
-     margin: 0;
    }
    
    body {

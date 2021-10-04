@@ -19,7 +19,7 @@ const PASSWORD_REGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 const validationSchema = yup.object({
 
   email: yup.string().required(),
-  password: yup.string().required("This field is required"),
+  password: yup.string().required("Password shoulld have atleast one character & uppercase"),
   comfirmPassword: yup.string().when("password", {
     is: val => (val && val.length > 0 ? true : false),
     then: yup.string().oneOf(
@@ -28,8 +28,7 @@ const validationSchema = yup.object({
     )
   }),
   phone_number: yup.string().required(),
- first_name: yup.string().required(),
- last_name: yup.string().required(),
+
  country:yup.string().required(),
 });
 
@@ -87,129 +86,164 @@ export function SignUp () {
 
   return ( 
   
-    <div class=" login-dark bg-dark ">
-<form onClick={formik.handleSubmit} class=" text-muted row g-3" style={{background:"rgb(10, 10, 10)"}}>
-<div class="illustration"><img src="https://api.freelogodesign.org/files/95d71dec2e024c6db036e3fb73e35817/thumb/logo_200x200.png?v=637652951930000000"/></div>
-   <h2 class="sr-only">Login Form</h2>
-   <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">First Name</label>
-    <input type="text"
-    name="first_name"
-    autoFocus
-     class="form-control"
-      id=""      onChange={formik.handleChange}
-      onBlur={formik.handleBlur}
-      value={formik.values.first_name}/>
-      {formik.touched.first_name && formik.errors.first_name ? <small class="text-danger" > {formik.errors.first_name}</small> : null}
-  </div>
-
-  <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Last Name</label>
-    <input type="text" 
-    name="last_name"
-    class="form-control" 
-    id="inputPassword4"      onChange={formik.handleChange}
-    onBlur={formik.handleBlur}
-    value={formik.values.last_name}/>
-    {formik.touched.last_name && formik.errors.last_name ? <small class="text-danger" > {formik.errors.last_name}</small> : null}
-  </div>
-
-
-  <div class="col-md-6">
-  <label for="inputPassword4" class="form-label">Email</label>
-<input class="form-control text-muted"
- type="email" name="email" 
- placeholder=""
-
-      onChange={formik.handleChange}
+    <div class=" ">
+           <div class="login-box">
+  <h2>Sign Up</h2>
+  <form onClick={formik.handleSubmit}>
+    <div className="row">
+      <div className="col mt-2">
+      <div class="user-box">
+      <input type="text"
+       name="first_name" 
+       required=""
+      autoFocus
+       onChange={formik.handleChange}
 onBlur={formik.handleBlur}
-value={formik.values.email}/>
-{formik.touched.email && formik.errors.email ? <small class="text-danger" > {formik.errors.email}</small> : null}
+value={formik.values.first_name}/>
+{formik.touched.first_name && formik.errors.first_name? <small class="text-danger" > {formik.errors.first_name}</small> : null}
+      <label>First Name</label>
+    </div>
+      </div>
+      <div className="col mt-2">
+      <div class="user-box">
+      <input type="text"
+       name="last_name" 
+       required=""
+   
+       onChange={formik.handleChange}
+onBlur={formik.handleBlur}
+value={formik.values.last_name}/>
+{formik.touched.last_name && formik.errors.last_name? <small class="text-danger" > {formik.errors.last_name}</small> : null}
+      <label>Last Name</label>
+    </div>
+      </div>
+      
+    </div>
+    <div class="row">
+      <div class="col mt-2">
 
+      <div class="user-box">
+      <input type="email"
+       name="email"
+        required=""
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.email}/>
+        {formik.touched.email && formik.errors.email? <small class="text-danger" > {formik.errors.email}</small> : null}
+      <label>Email</label>
+    </div>
+      </div>
+      <div class="col mt-2">
 
+<div class="user-box">
+<input type="phone"
+ name="phone_number"
+  required=""
+  onChange={formik.handleChange}
+  onBlur={formik.handleBlur}
+  value={formik.values.phone_number}/>
+  {formik.touched.phone_number && formik.errors.phone_number? <small class="text-danger" > {formik.errors.phone_number}</small> : null}
+<label>Phone Number</label>
 </div>
+</div>
+    </div>
+    <div class="row">
+      <div class="col mt-2">
 
-<div class="col-md-6">
-<label for="inputPassword4" class="form-label">Password</label>
-<input class="form-control text-muted"
- type="password" name="password" 
- placeholder="" 
-      onChange={formik.handleChange}
-onBlur={formik.handleBlur}
-value={formik.values.password}/>
-{formik.touched.password && formik.errors.password ? <small class="text-danger" > {formik.errors.password}</small> : null}
+      <div class="user-box">
+      <input type="password"
+       name="password"
+        required=""
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.password}/>
+        {formik.touched.password && formik.errors.password? <small class="text-danger" > {formik.errors.password}</small> : null}
+      <label>Password</label>
+    </div>
+      </div>
+      <div class="col mt-2">
 
- </div>
- <div class="col-md-6">
-<label for="inputPassword4" class="form-label">Comfirm Password</label>
-<input class="form-control text-muted"
- type="password" name="comfirmPassword" 
- placeholder="" 
+<div class="user-box">
+<input type="password"
+ name="comfirmPassword"
+  required=""
+  onChange={formik.handleChange}
+  onBlur={formik.handleBlur}
+  value={formik.values.comfirmPassword}/>
+  {formik.touched.comfirmPassword && formik.errors.comfirmPassword? <small class="text-danger" > {formik.errors.comfirmPassword}</small> : null}
+<label>Comfirm Password</label>
+</div>
+</div>
+<div class="col mt-2">
 
-onBlur={formik.handleBlur}
-value={formik.values.comfirmPassword}/>
-{formik.touched.comfirmPassword && formik.errors.comfirmPassword ? <small class="text-danger" > {formik.errors.comfirmPassword}</small> : null}
+<div class="user-box">
+<input type="text"
+ name="country"
+  required=""
+  onChange={formik.handleChange}
+  onBlur={formik.handleBlur}
+  value={formik.values.country}/>
+  {formik.touched.country && formik.errors.country? <small class="text-danger" > {formik.errors.country}</small> : null}
+<label>Country</label>
+</div>
+</div>
+    </div>
+    <div class="row">
+      <div class="col mt-2">
 
- </div>
-  <div class="col-md-6">
-    <label for="inputAddress" class="form-label">phone</label>
-    <input type="phone" 
-    name="phone_number"
-    class="form-control"
-      placeholder=""
-      onChange={formik.handleChange}
-onBlur={formik.handleBlur}
-value={formik.values.phone_number}/>
-{formik.touched.phone_number && formik.errors.phone_number? <small class="text-danger" > {formik.errors.phone_number}</small> : null}
-  </div>
-  <div class="col-md-6">
-    <label for="inputAddress" class="form-label">Country</label>
-    <input type="country" 
-    name="country"
-    class="form-control"
-      placeholder=""
-      onChange={formik.handleChange}
-onBlur={formik.handleBlur}
-value={formik.values.country}/>
-{formik.touched.country && formik.errors.country? <small class="text-danger" > {formik.errors.country}</small> : null}
-  </div>
+      <div class="user-box">
+      <input type="text"
+       name="business_name"
+        required=""
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.business_name}/>
+       
+      <label>Business Name</label>
+    </div>
+      </div>
+      <div class="col mt-2">
 
-  <div class="col-md-6">
-    <label for="inputCity" class="form-label">Business Name</label>
-    <input type="text"
-    name="business_name"
-     class="form-control"
-      id="inputCity"/>
-  </div>
+<div class="user-box">
+<input type="text"
+ name="business_type"
+  required=""
+  onChange={formik.handleChange}
+  onBlur={formik.handleBlur}
+  value={formik.values.business_type}/>
+ 
+<label>business Type</label>
+</div>
+</div>
+<div class="col mt-2">
 
-
-  <div class="col-md-6">
-    <label for="inputState" class="form-label">Business Type</label>
-    <input type="text"
-    name="business_type"
-     class="form-control"
-      id="inputCity"/>
-  </div>
-
-
-  <div class="col-md-6">
-    <label  class="form-label">Business Address</label>
-    <input type="text"
-     class="form-control"
-     name="business_address"
-      id="inputZip"/>
-  </div>
-
-
-   <div class="form-group">
-
-   <button class="btn btn-primary btn-block" onClick={handleOnClick} disabled={!formik.isValid} >Sign Up</button>
-   </div>
+<div class="user-box">
+<input type="text"
+ name="cbusiness_address"
+  required=""
+  onChange={formik.handleChange}
+  onBlur={formik.handleBlur}
+  value={formik.values.business_address}/>
+ 
+<label>Business Address</label>
+</div>
+</div>
+    </div>
 
 
- <Link to="/login" style={{textDecoration:"none"}}>  <a class="forgot">Already Have an account? Login here </a></Link>
-   <p class="text-dark mt-3 font-light">*By Signing up, you agree our use of cookies</p>
-   </form>
+
+<a href="#" class="btn" type="">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    <button type="submit" class="btn btn1 text-white" onClick={handleOnClick} disabled={!formik.isValid} >Sign Up</button>
+    </a>
+
+
+  </form>
+<Link to="/SignIn"><p className="text-center text-muted mt-2">Already have an account? Login </p></Link>
+</div>
  </div>
 
 

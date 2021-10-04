@@ -97,7 +97,8 @@ export default function RentalsTenant() {
                                 <div class="row">
 
                                 <div class="col-md-3">
-                                <div class="card-sl">
+                                    <Link to="/single-house">
+                                    <div class="card-sl">
                                   <div class="card-image">
                                   <img
                                  src={property.thumbnail} />
@@ -116,6 +117,8 @@ export default function RentalsTenant() {
                                         <a href="#" class="card-button bg-danger"> Request</a>
                                            <a href="#" class="card-button mt-4 "> view details</a>
                                         </div>
+                                    </Link>
+                          
                                         </div>
 
                                 <div class="col-md-3">
@@ -199,7 +202,10 @@ export default function RentalsTenant() {
                             <div>
                                 <div class="row">
                                   <div className="col-md-3">
-                                  <div class="card-sl">
+                              
+                            
+                                  <Link to={'/product/'+property.id}>
+                                        <div class="card-sl">
                                   <div class="card-image">
                                   <img
                                  src={property.thumbnail} />
@@ -216,11 +222,15 @@ export default function RentalsTenant() {
                                              {property.rent_amount}
                                                </div>
                                         <a href="#" class="card-button bg-danger"> Request</a>
-                                           <a href="#" class="card-button mt-4 "> view details</a>
+                                      
                                         </div>
+                                        </Link>
+                                 
                                   </div>
                                   <div className="col-md-3">
-                                  <div class="card-sl">
+       
+                                        <Link to={'/product/'+property.id}>
+                                        <div class="card-sl">
                                   <div class="card-image">
                                   <img
                                  src={property.thumbnail} />
@@ -237,11 +247,14 @@ export default function RentalsTenant() {
                                              {property.rent_amount}
                                                </div>
                                         <a href="#" class="card-button bg-danger"> Request</a>
-                                           <a href="#" class="card-button mt-4 "> view details</a>
+                                      
                                         </div>
+                                        </Link>
                                   </div>
                                   <div className="col-md-3">
-                                  <div class="card-sl">
+                        
+                                  <Link to={'/product/'+property.id}>
+                                        <div class="card-sl">
                                   <div class="card-image">
                                   <img
                                  src={property.thumbnail} />
@@ -258,11 +271,14 @@ export default function RentalsTenant() {
                                              {property.rent_amount}
                                                </div>
                                         <a href="#" class="card-button bg-danger"> Request</a>
-                                           <a href="#" class="card-button mt-4 "> view details</a>
+                                      
                                         </div>
+                                        </Link>
                                   </div>
                                   <div className="col-md-3">
-                                  <div class="card-sl">
+                    
+                                        <Link to={'/product/'+property.id}>
+                                        <div class="card-sl">
                                   <div class="card-image">
                                   <img
                                  src={property.thumbnail} />
@@ -279,8 +295,9 @@ export default function RentalsTenant() {
                                              {property.rent_amount}
                                                </div>
                                         <a href="#" class="card-button bg-danger"> Request</a>
-                                           <a href="#" class="card-button mt-4 "> view details</a>
+                                      
                                         </div>
+                                        </Link>
                                   </div>
                                    
 

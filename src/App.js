@@ -25,8 +25,11 @@ import Public from './Components/Public/Public';
 import SignIn from './Components/Login/SignIn';
 import TenantDetails from './Components/TenantDetails/TenantDetails';
 import PaymentstatusTenant from './Components/PaymentstatusTentant/PaymenystatusTenant';
-
-
+import Switcher from './Components/switcher/Switcher';
+import Dashboardapi from './Components/DashboardApi/Dashboardapi';
+import Submenu from './Components/submenu/Submenu';
+import SingleHouse from './Components/singleHouse/SingleHouse';
+import dashApi from './Components/dashApi/DashApi';
 function App() {
   
 
@@ -50,7 +53,7 @@ React.useEffect(()=> {
 
 },[])
   return (
-    <div className="App">
+    <div className="App container-fluid">
       <AuthApi.Provider value={{auth,setAuth}}>
       <Router>
 
@@ -77,14 +80,14 @@ const Routes = ()=> {
 
   const Auth = React.useContext(AuthApi)
   return(
-    <div class="bg-dark">
-     
-      <Switch>
+    <div>
   
+      <Switch>
+ 
  <ProtectedRoute path="/dashboard" auth={ Auth.auth} component={Dashboard}/>
 
 
-<ProtectedLogin  path="/signIn"  auth={ Auth.auth}  component={SignIn}/>
+<ProtectedLogin  path="/SignIn"  auth={ Auth.auth}  component={SignIn}/>
 <ProtectedLogin  path="/Signup"  auth={ Auth.auth}  component={SignUp}/>
 
 
@@ -118,6 +121,12 @@ const Routes = ()=> {
 <Route path="/status-tenant">
  <PaymentstatusTenant/>
 </Route>
+<Route exact path='/product/:id' component={SingleHouse} />
+
+<Submenu/>
+
+ <Switcher/>
+
 
 </Switch>
 
@@ -140,7 +149,7 @@ const ProtectedRoute = ({auth,component:Component,...rest}) =>{
     ):
     (
 
-      <Redirect to="/signIn"/>
+      <Redirect to="/SignIn"/>
     )
   
   }

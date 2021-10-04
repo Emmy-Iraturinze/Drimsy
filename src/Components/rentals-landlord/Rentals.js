@@ -1,22 +1,76 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable react/style-prop-object */
-/* eslint-disable jsx-a11y/iframe-has-title */
-/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useEffect, useState } from 'react';
+import { Table, Button } from 'semantic-ui-react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-import {Link} from 'react-router-dom'
-import Header from '../Header/Header';
+export default function Read() {
+    const [apiData, setApiData] = useState([]);
+    useEffect(() => {
+        axios.get(`https://authify-ms.romalice.com/user`)
+            .then((getData) => {
+                setApiData(getData.data);
+            })
+    }, [])
 
-function Rentals (){
+    const setData = (id, firstName, lastName) => {
+        localStorage.setItem('ID', id)
+        localStorage.setItem('firstName', firstName)
+        localStorage.setItem('lastName', lastName)
+    }
 
-     return(
-          <div className="conatiner">
-            <Header/>
-   <div>
-     :Under Maintainence
-   </div>
-          </div>
-    
-     );
+    const getData = (email) => {
+        axios.get(`https://authify-ms.romalice.com/`)
+            .then((getData) => {
+                setApiData(getData.data);
+            })
+    }
+
+    const onDelete = (email) => {
+        axios.delete(`https://authify-ms.romalice.com/`)
+        .then(() => {
+            getData();
+        })
+    }
+
+    return (
+        <div>
+            {/* <Table celled>
+                <Table.Header>
+                    <Table.Row>
+                        <Table.HeaderCell>ID</Table.HeaderCell>
+                        <Table.HeaderCell>First Name</Table.HeaderCell>
+                        <Table.HeaderCell>Last Name</Table.HeaderCell>
+                        <Table.HeaderCell>Update</Table.HeaderCell>
+                        <Table.HeaderCell>Delete</Table.HeaderCell>
+                    </Table.Row>
+                </Table.Header>
+
+                <Table.Body>
+                    {apiData.map((data) => {
+                        return (
+                            <Table.Row class="text-white">
+                                <Table.Cell  class="text-white">{data.telephone}</Table.Cell>
+                                <Table.Cell  class="text-white">{data.first_name}</Table.Cell>
+                                <Table.Cell  >{data.last_name}</Table.Cell>
+                                
+                                <Table.Cell>
+                                    <Link to='/update'>
+                                        <Button
+                                            color="green"
+                                            onClick={() => setData(data.id, data.firstName, data.lastName)}>
+                                            Update
+                                        </Button>
+                                    </Link>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <Button color="red" onClick={() => onDelete(data.email)}>Delete</Button>
+                                </Table.Cell>
+                            </Table.Row>
+                        )
+                    })}
+
+                </Table.Body>
+            </Table> */}
+        </div>
+    )
 }
-
-export default Rentals;

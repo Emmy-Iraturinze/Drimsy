@@ -1,3 +1,48 @@
+.glass-panel {
+  color: #fff;
+  margin: 40px auto;
+  background-color: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  width: 100%;
+  border-radius: 15px;
+  padding: 32px;
+  backdrop-filter: blur(10px);
+}
+
+.glass-button {
+  display: inline-block;
+  padding: 24px 32px;
+  border: 0;
+  text-decoration: none;
+  border-radius: 15px;
+  background-color: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(30px);
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.glass-button:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+/* Extra styles for demo */
+/* Article:  https://superdevresources.com/glassmorphism-ui-css/ */
+
+.glass-panel {  
+  max-width: 600px;
+}
+
+.glass-button {
+  margin: 15px;
+  margin-top: 40px;
+}
+
+/* glassmorphimsim */
+
 .product-grid{
   font-family: 'Antic Slab', serif;
   text-align: center;
@@ -218,24 +263,7 @@ footer a {
     text-align: center;
     display: inline-block;
 }
-.youtubeBtn i{
-   font-size:20px;
-  float:left;
-}
-.youtubeBtn a{
-    color:#ff0000;
-    animation: youtubeAnim 1000ms linear infinite;
-  float:right;
-}
-.youtubeBtn a:hover{
-  color:#c9110f;
-  transition:all .3s ease-in-out;
-  text-shadow: none;
-}
-.youtubeBtn i:active{
-  transform:scale(.9);
-  transition:all .3s ease-in-out;
-}
+
 
 
 
