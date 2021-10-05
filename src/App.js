@@ -32,6 +32,7 @@ import SingleHouse from './Components/singleHouse/SingleHouse';
 import dashApi from './Components/dashApi/DashApi';
 import Searchbox from './Components/Dashboard/searchbar/Searchbox';
 import Prop from './Components/rentals-landlord/Add_property/Prop';
+import Users from './Components/Users/Users';
 function App() {
   
 
@@ -89,7 +90,9 @@ const Routes = ()=> {
   <Public/>
 </Route>
 
-
+<Route path="/users">
+  <Users/>
+</Route>
 <Route path="/prop">
   <Prop/>
 </Route>
