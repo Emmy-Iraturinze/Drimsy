@@ -45,18 +45,22 @@ function Hero() {
     </div>
     <ul class="social">
    
-    <li class="text-white" title="Pay Rent"><Link to="/rental-pay"><img src="https://img-premium.flaticon.com/png/128/1052/premium/1052896.png?token=exp=1633357216~hmac=c5fe2c8fe61c6205e49ce69d9841e3cd"/></Link></li>
-    <li class="text-white" title="Rentals"><Link to="/rentals2"><img src="https://img-premium.flaticon.com/png/128/1018/premium/1018573.png?token=exp=1633357314~hmac=ab876804d0a7d9c785e2d20902e64a2c"/></Link></li>
-    <li class="text-white" title="Add a property"><Link to="/prop"><img src="https://cdn-icons-png.flaticon.com/128/1089/1089346.png"/></Link></li>
-    <li class="text-white" title="check Payment status"><Link to="/status-tenant"><img src="https://cdn-icons-png.flaticon.com/128/1611/1611154.png"/></Link></li> 
+    {/* <li class="text-white" title="Pay Rent"><Link to="/rental-pay"><img src="https://img-premium.flaticon.com/png/128/1052/premium/1052896.png?token=exp=1633357216~hmac=c5fe2c8fe61c6205e49ce69d9841e3cd"/></Link></li> */}
+    {/* <li class="text-white" title="Rentals"><Link to="/rentals2"><img src="https://img-premium.flaticon.com/png/128/1018/premium/1018573.png?token=exp=1633357314~hmac=ab876804d0a7d9c785e2d20902e64a2c"/></Link></li> */}
+    {/* <li class="text-white" title="Add a property"><Link to="/prop"><img src="https://cdn-icons-png.flaticon.com/128/1089/1089346.png"/></Link></li> */}
+    {/* <li class="text-white" title="check Payment status"><Link to="/status-tenant"><img src="https://cdn-icons-png.flaticon.com/128/1611/1611154.png"/></Link></li>  */}
     {/* <li class="text-white" title="Subscribe"data-bs-toggle="modal" data-bs-target="#exampleModal"><Link  to="/dashboard"><img src="https://cdn-icons-png.flaticon.com/512/4830/4830941.png"/></Link></li> */}
-    <li class="menu-nav-item">    <div class="d-flex flex-column sim">   <li class="nav-item "  style={{listStyle:"none"}}>
+    <li class="menu-nav-item">  
+      {/* <div class="d-flex flex-column sim">
+              <li class="nav-item "  style={{listStyle:"none"}}>
         <button class="btn  text-white me-2 " onClick={handleOnClick}>
       LOG OUT
          </button>
       
          <span></span>
-        </li> </div></li>
+        </li> 
+        </div> */}
+        </li>
        </ul>
   </section>
 
