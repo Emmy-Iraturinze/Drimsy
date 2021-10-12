@@ -2,6 +2,7 @@
 import React from 'react';
 
 import axios from 'axios';
+import Related from './Related';
 
 class SingleHouse extends React.Component
 {
@@ -42,6 +43,7 @@ class SingleHouse extends React.Component
         
          <p className="mt-3 mb-3">{this.state.productdetails.bedrooms}</p>
          <p className="mt-3 mb-3">{this.state.productdetails.bathrooms}</p>
+         <Related/>
        </div>
     )
   }

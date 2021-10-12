@@ -71,6 +71,7 @@ header .logo
   height: 100%;
   object-fit: cover;
   opacity: 0.8;
+ 
 }
 .overlay
 {
@@ -81,6 +82,7 @@ header .logo
   height: 100%;
   background: #03a9f4;
   mix-blend-mode: overlay;
+
 }
 .text
 {

@@ -6,7 +6,7 @@ import { defaults } from "js-cookie";
 import React ,{ Component } from "react";
 import AuthApi from '../../AuthApi';
 import Cookies from 'js-cookie';
-
+import Navbar from '../Nav/Navbar'
 import {Link} from 'react-router-dom'
 import { useState, useEffect} from 'react';
 import './Dashboard.css'
@@ -53,6 +53,12 @@ const Dashboard = () =>{
                  setAPIData(response.data);
              })
      }, [])
+     useEffect(() => {
+      axios.get(`https://endpoint.drimsy.com/user`)
+          .then((response) => {
+              setAPIData(response.data);
+          })
+  }, [])
  
      const searchData = (value) => {
          setSearchTerm(value)
@@ -69,8 +75,7 @@ const Dashboard = () =>{
    
      return(
        <div class="">
-
-
+  <Hero/>
 
 
 
@@ -117,14 +122,14 @@ const Dashboard = () =>{
    </div>
    
     {/*image  hero background  */}
-    <Hero/>
-    
+  
+  
    <div className="">
    <div class="big-image">
        
-    
+  
   <div class="overlay">
-  <Header/>
+
     <div className="row">
       <div className="col-12 container" >
       {/* <h1 class="text-white fw-bolder text-center  display-5 mt-5"  style={{fontWeight:"900!important"}}>Exclusive pool. Ground coffee. Coffee pods.</h1> */}
@@ -198,7 +203,8 @@ const Dashboard = () =>{
 
 
      <div className="container">
-    
+
+  
      <div className="row">
      <h3 className="text-white mb-4 mt-5">Featured<br/> Property</h3>
         <p className="text-muted mb-4">Find the latest homes for sale, <br/>property news & real estate market data</p>

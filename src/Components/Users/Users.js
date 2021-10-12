@@ -8,7 +8,7 @@ import axios from "axios";
 
 import { useState, useEffect} from 'react';
 import { Card, Input } from 'semantic-ui-react'
-
+import './users.css'
 import Header from '../Header/Header'
 import Footer from '../footer/Footer'
 
@@ -44,11 +44,11 @@ export default function Users() {
         <div class="col-md-9">
             <div class="">
               
-                <div class="d-flex justify-content-center px-5">
+                <div class="d-flex  px-5 mb-5">
                     <div class="search"> <input type="text" 
                     class="search-input" 
                     placeholder="Search..." 
-                    name=""  onChange={(e) => searchData(e.target.value)}/> <a href="#" class="search-icon"> <i class="fa fa-search"></i> </a> </div>
+                    name=""  onChange={(e) => searchData(e.target.value)}/> <a href="#" class="search-icon"> Add</a> </div>
                 </div>
               
             </div>
@@ -75,6 +75,7 @@ export default function Users() {
   </div>
 </div>
                         </div>
+                        
                               
                                    
 

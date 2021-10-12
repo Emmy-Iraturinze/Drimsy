@@ -1,7 +1,67 @@
 import React from 'react'
-import './Props.css'
-import Header from '../../Header/Header'
+import { useFormik } from 'formik'
+import { Link } from 'react-router-dom'
+import './Add_prop.css'
+import AuthApi from '../../../AuthApi'
+import axios from 'axios';
+import { useState } from 'react';
+import * as yup from 'yup'
+import Header from '../../Header/Header';
+
+
+
+const validationSchema = yup.object({
+
+  usage: yup.string().required(),
+  name: yup.string().required(),
+  rent_amount: yup.string().required(), 
+  bedrooms: yup.string().required(), 
+  bathrooms: yup.string().required(), 
+ });
+ 
+ 
+
+
 const Prop = () => {
+  const Auth = React.useContext(AuthApi)
+
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
+
+ 
+
+  const onSubmit = async (values) => {
+    setError(null);
+    const response = await axios
+      .post("https://endpoint.drimsy.com/properties", values)
+      .catch((err) => {
+        if (err && err.response) setError(err.response.data.message);
+      });
+
+      if (response && response.data) {
+        setError(null);
+        setSuccess(response.data.message);
+        
+        formik.resetForm();
+
+     
+      }
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+    usage: "" ,
+    rent_amount:"",
+    bedrooms:"",
+    other_amenities:"",
+    country:"",
+    state:"",
+    region:"",},
+    validateOnBlur: true,
+    onSubmit,
+    validationSchema: validationSchema,
+  });
      return (
           <div>
                {/* <!-- Navbar--> */}

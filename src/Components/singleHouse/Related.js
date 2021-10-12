@@ -1,11 +1,12 @@
 import axios from "axios";
 import React ,{ Component } from "react";
 import {Link} from 'react-router-dom'
+import Footer from "../footer/Footer";
 
 
 
 
-class Dashboardapi extends Component {
+class Related extends Component {
 constructor(){
 super();
 this.state={
@@ -84,8 +85,9 @@ console.warn(properties);
 
 
 <div>
-
+<h4 className="fw-bolder mb-5">Related Properties</h4>
 <div class="row">
+
    <div className="col-md-3">
        
                                         <Link to={'/product/'+properties[20].id}>
@@ -97,7 +99,7 @@ console.warn(properties);
 
                                      <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
                                      <div class="card-heading">
-                                     {properties[20].name}
+                                    <p>{properties[20].name}</p>
                                       </div>
                                       <div class="card-text">
                                       {properties[20].other_amenities}
@@ -184,7 +186,7 @@ src={properties[15].thumbnail} />
        </div>
        </Link>
  </div>
-<Link to="/rentals2">  <button class="btn btn-outline-light ">View More </button></Link>
+
 
  
 </div>
@@ -198,13 +200,13 @@ src={properties[15].thumbnail} />
 
 
 }
-
+<Footer/>
 
     </div>
   }
 
 }
 
-export default Dashboardapi;
+export default Related;
 
 

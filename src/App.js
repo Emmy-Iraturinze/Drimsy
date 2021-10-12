@@ -131,7 +131,7 @@ const Routes = ()=> {
     <PaymentForm/>
 </Route>
 <Route path="/add-prop">
-  <AddProperty/>
+  <Prop/>
 </Route>
 <Route path="/status-tenant">
  <PaymentstatusTenant/>

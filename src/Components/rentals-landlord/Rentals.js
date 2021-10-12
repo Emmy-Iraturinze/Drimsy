@@ -1,76 +1,121 @@
-import React, { useEffect, useState } from 'react';
-import { Table, Button } from 'semantic-ui-react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable react/style-prop-object */
+/* eslint-disable jsx-a11y/iframe-has-title */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React ,{ Component } from "react";
+import {Link} from 'react-router-dom'
+import axios from "axios";
 
-export default function Read() {
-    const [apiData, setApiData] = useState([]);
-    useEffect(() => {
-        axios.get(`https://authify-ms.romalice.com/user`)
-            .then((getData) => {
-                setApiData(getData.data);
+import { useState, useEffect} from 'react';
+import { Card, Input } from 'semantic-ui-react'
+
+import Header from '../Header/Header'
+import Footer from '../footer/Footer'
+
+export default function Rentals() {
+    const [APIData, setAPIData] = useState([])
+    const [searchTerm, setSearchTerm] = useState('');
+    const [filteredResults, setFilteredResults] = useState([]);
+    useEffect((ownerId) => {
+        axios.get(`https://endpoint.drimsy.com/properties/owner/${ownerId}`)
+            .then((response) => {
+                setAPIData(response.data);
             })
     }, [])
 
-    const setData = (id, firstName, lastName) => {
-        localStorage.setItem('ID', id)
-        localStorage.setItem('firstName', firstName)
-        localStorage.setItem('lastName', lastName)
-    }
-
-    const getData = (email) => {
-        axios.get(`https://authify-ms.romalice.com/`)
-            .then((getData) => {
-                setApiData(getData.data);
+    const searchData = (value) => {
+        setSearchTerm(value)
+        if (searchTerm !== '') {
+            const filteredData = APIData.filter((property) => {
+                return Object.values(property).join('').toLowerCase().includes(searchTerm.toLowerCase())
             })
-    }
-
-    const onDelete = (email) => {
-        axios.delete(`https://authify-ms.romalice.com/`)
-        .then(() => {
-            getData();
-        })
+            setFilteredResults(filteredData)
+        }
+        else {
+            setFilteredResults(APIData)
+        }
     }
 
     return (
-        <div>
-            {/* <Table celled>
-                <Table.Header>
-                    <Table.Row>
-                        <Table.HeaderCell>ID</Table.HeaderCell>
-                        <Table.HeaderCell>First Name</Table.HeaderCell>
-                        <Table.HeaderCell>Last Name</Table.HeaderCell>
-                        <Table.HeaderCell>Update</Table.HeaderCell>
-                        <Table.HeaderCell>Delete</Table.HeaderCell>
-                    </Table.Row>
-                </Table.Header>
+        <div class="container-fluid">
 
-                <Table.Body>
-                    {apiData.map((data) => {
+
+            {/* search2 */}
+ <div class="container" >
+        
+            <div itemsPerRow={3} >
+                {searchTerm.length > 1 ? (
+                    filteredResults.map((property) => {
                         return (
-                            <Table.Row class="text-white">
-                                <Table.Cell  class="text-white">{data.telephone}</Table.Cell>
-                                <Table.Cell  class="text-white">{data.first_name}</Table.Cell>
-                                <Table.Cell  >{data.last_name}</Table.Cell>
-                                
-                                <Table.Cell>
-                                    <Link to='/update'>
-                                        <Button
-                                            color="green"
-                                            onClick={() => setData(data.id, data.firstName, data.lastName)}>
-                                            Update
-                                        </Button>
-                                    </Link>
-                                </Table.Cell>
-                                <Table.Cell>
-                                    <Button color="red" onClick={() => onDelete(data.email)}>Delete</Button>
-                                </Table.Cell>
-                            </Table.Row>
+                            <div class="container">
+                    
+                            </div>
                         )
-                    })}
+                    })
+                ) : (
+                    APIData.map((property) => {
+                        return (
+                            <div>
+                                <div class="row">
+                                  <div className="col-md-3">
+                              
+                            
+                                  <Link to={'/product/'+property.id}>
+                                  <div class="card" style="width: 18rem;">
+  <img src={property.thumbnail} class="card-img-top" alt="..."/>
+  <div class="card-body">
+    <p class="card-text">{property.name}</p>
+  </div>
+</div>
+                                        </Link>
+                                 
+                                  </div>
+                                  <div className="col-md-3">
+       
+                                        <Link to={'/product/'+property.id}>
+                                        <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="..."/>
+  <div class="card-body">
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+                                        </Link>
+                                  </div>
+                                  <div className="col-md-3">
+                        
+                                  <Link to={'/product/'+property.id}>
+                                  <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="..."/>
+  <div class="card-body">
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+                                        </Link>
+                                  </div>
+                                  <div className="col-md-3">
+                    
+                                        <Link to={'/product/'+property.id}>
+                                        <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="..."/>
+  <div class="card-body">
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+                                        </Link>
+                                  </div>
+                                   
 
-                </Table.Body>
-            </Table> */}
+                                </div>
+
+                         
+                            </div>
+                        )
+                    })
+                )}
+            </div>
         </div>
+        <Footer/>
+        </div>
+       
     )
 }

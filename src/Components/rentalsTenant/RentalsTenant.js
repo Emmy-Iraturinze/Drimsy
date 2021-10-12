@@ -38,7 +38,7 @@ export default function RentalsTenant() {
 
     return (
         <div class="container-fluid">
-<Header/>
+
 <div class="container mt-4">
     <div class="row d-flex justify-content-center">
         <div class="col-md-9">

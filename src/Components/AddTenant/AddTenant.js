@@ -11,6 +11,8 @@ import { useState } from 'react';
 import * as yup from 'yup'
 import Header from '../Header/Header';
 import Footer from '../footer/Footer';
+import Users from '../Users/Users';
+
       
 
 /* eslint-disable no-unused-vars */
@@ -54,8 +56,8 @@ export function AddTenant () {
 
   const formik = useFormik({
     initialValues: { 
-     tenant_id: "4017ef4e-682c-4cd5-bcd3-1f083cbc46e8",
-     property_id: "10b2d68e-027f-4744-803a-2c20326e7c75"
+     tenant_id: "",
+     property_id: ""
      },
     validateOnBlur: true,
     onSubmit,
@@ -173,7 +175,7 @@ return (
   
        <div class="container mt-5">
             <div class="row">
-                 <div id="col-li" class="col">
+                 <div id="col-li" class="col-sm-6">
                  <h2 class="text-white">Comfy Apartement</h2>
        <p class="text-secondary">This exceptional residence is one of only four homes in this 
             magnificent double townhouse on the second block of Commonwealth Avenue. 
@@ -186,70 +188,27 @@ the house fully integrates smart-house technology and is in new construction con
                    <p class="text-muted"><i class="fas fa-sink me-2" ></i><br/>2 Bedrooms</p>
                 <p class="text-muted"><i class="fas fa-sink me-2" ></i><br/>3 Bathrooms</p>
                    <p class="text-muted"><i class="fas fa-dollar-sign me-2"></i><br/>Rwf 100,000</p>
-                  
-                   <div class="row mt-4" >
- 
-                   <div class="form-body">
-        <div class="row">
-            <div class="form-holder">
-                <div class="form-content">
-                    <div class="form-items">
-                        <h3>Add Tenant</h3>
-                        <p>Search your new Tenant and Add them</p>
-                     
-                        <form  onSubmit={formik.handleSubmit}class="requires-validation" novalidate>
-
-                            <div class="col-md-12">
-                               <input class="form-control" type="text" name="name" placeholder="Enter National ID" required/>
-                               <div class="valid-feedback">Username field is valid!</div>
-                               <div class="invalid-feedback">Username field cannot be blank!</div>
-                            </div>
-
-                   
-
-                            <div class="form-button mt-3">
-                                <button id="submit" type="submit" class="btn btn-primary">Add Tenant</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-</div>
-
+              
                  </div>
+               
               
                  <div class="col">
                       <h2 class="text-white mb-3">Location</h2>
-                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.4469944162834!2d30.040164314171935!3d-1.9755053373220381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca5955ec19b33%3A0xdf1cc8655e0cc320!2sKigali%20Baobab%20Hotel!5e0!3m2!1sen!2srw!4v1630416716526!5m2!1sen!2srw" width="105%" height="20%" ></iframe>
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.4469944162834!2d30.040164314171935!3d-1.9755053373220381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca5955ec19b33%3A0xdf1cc8655e0cc320!2sKigali%20Baobab%20Hotel!5e0!3m2!1sen!2srw!4v1630416716526!5m2!1sen!2srw" width="105%" height="240" ></iframe>
                  </div>
-                
+               
+                 <div className="col-12">
+                 <h5 className="text-center mt-5 fw-bold">
+                   Search Tenanat and add Them to your house
+                 </h5>
+                 <Users/>
+                 </div>
+              
             </div>
 
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog bg-dark">
-    <div class="modal-content modal-content2" height="90%">
-      <div class="modal-header bg-dark">
-       <h5 class="text-white"> Do you want to add This Tenant? </h5>
-   
-   </div>
-      <div class="modal-body">
-  <p class="text-dark">Emmy Iraturinze</p>
- <p class="text-dark mt-3">+250782251506</p>
-      </div>
-      <div class="modal-footer p-1 bg-light">
-      <button type="button" class="btn btn-primary">Add</button>
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Discard</button>
-        
-      </div>
-    </div>
-  </div>
-</div>
+
      
        </div>
       
