@@ -202,7 +202,11 @@ const Dashboard = () =>{
    
 
 
-     <div className="container">
+
+   
+     <div data-spy="scroll" data-target="#featured" data-offset="0">
+
+     <div id="featured" className="container">
 
   
      <div className="row">
@@ -342,8 +346,8 @@ const Dashboard = () =>{
    
    </div>
      </div>
-   
 
+</div>
 
    
    <div id="rentals" className="container">

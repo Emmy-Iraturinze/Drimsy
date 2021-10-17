@@ -18,7 +18,7 @@ import Submenu from "../submenu/Submenu";
 import Dashboardapi from "../DashboardApi/Dashboardapi";
 import Glass from "../glassmorphism/Glass";
 
-import Hero from "../herosection/Hero";
+import Pubhero from "./Pubhero";
 
 
 
@@ -117,7 +117,7 @@ const Dashboard = () =>{
    </div>
    
     {/*image  hero background  */}
-    <Hero/>
+  <Pubhero></Pubhero>
     
    <div className="">
    <div class="big-image">

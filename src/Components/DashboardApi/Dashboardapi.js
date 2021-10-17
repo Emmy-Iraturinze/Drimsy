@@ -184,7 +184,7 @@ src={properties[15].thumbnail} />
        </div>
        </Link>
  </div>
-<Link to="/rentals2">  <button class="btn btn-outline-light ">View More </button></Link>
+<Link to="/rentals2">  <a class=" ">View More </a></Link>
 
  
 </div>

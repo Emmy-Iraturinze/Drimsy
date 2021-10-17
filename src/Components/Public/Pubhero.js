@@ -1,16 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import Myvideo from '../../images/final_614b50072c522c00a150160c_705395.mp4'
-import './hero.css';
+import '../herosection/hero.css'
 import AuthApi from '../../AuthApi';
 import Cookies from 'js-cookie';
 import Header from '../Header/Header'
 import Switcher from '../switcher/Switcher';
-import Scrollspy from './Scrollspy';
 
 
 
-function Hero() {
+function Pubhero() {
 
      const Auth = React.useContext(AuthApi)
      const handleOnClick=() =>{
@@ -33,24 +32,17 @@ function Hero() {
     </header>
     <video src={Myvideo} muted="true" loop autoplay="true"></video>
     <div class="overlay"></div>
-    <div className="row">
-    <div className="col-12">
+
     <div class="text">
          
-         <h2>Never Stop To </h2> 
-         <h3>Exploring The World</h3>
-         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-         consequat.</p>
-         <a href="#" class="mb-2">Explore</a>
-       </div>
-      </div>
-      <div className="col text-center bg-trasnparent " >
-        <Scrollspy/>
-      </div>
+      <h2>Never Stop To </h2> 
+      <h3>Exploring The World</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat.</p>
+      <Link to="/SignIn">LOGIN</Link>
     </div>
-
     <ul class="social">
    
     {/* <li class="text-white" title="Pay Rent"><Link to="/rental-pay"><img src="https://img-premium.flaticon.com/png/128/1052/premium/1052896.png?token=exp=1633357216~hmac=c5fe2c8fe61c6205e49ce69d9841e3cd"/></Link></li> */}
@@ -78,4 +70,4 @@ function Hero() {
      )
 }
 
-export default Hero
+export default Pubhero
