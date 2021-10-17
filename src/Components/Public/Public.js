@@ -197,7 +197,7 @@ const Dashboard = () =>{
    
 
 
-     <div className="container">
+     <div className="container" style={{marginTop:"50px"}}>
     
      <div className="row">
      <h3 className="text-white mb-4 mt-5">Featured<br/> Property</h3>

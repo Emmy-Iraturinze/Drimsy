@@ -206,9 +206,8 @@ const Dashboard = () =>{
    
      <div data-spy="scroll" data-target="#featured" data-offset="0">
 
-     <div id="featured" className="container">
+     <div id="featured" className="container" style={{marginTop:"50px"}}>
 
-  
      <div className="row">
      <h3 className="text-white mb-4 mt-5">Featured<br/> Property</h3>
         <p className="text-muted mb-4">Find the latest homes for sale, <br/>property news & real estate market data</p>

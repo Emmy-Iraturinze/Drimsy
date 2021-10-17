@@ -27,7 +27,7 @@ function Pubhero() {
   <section class="showcase" style={{marginTop:"-1px"}}>
     <header>
       <h2 class="logo">Drimzy</h2>
-   <Switcher/>
+
  
     </header>
     <video src={Myvideo} muted="true" loop autoplay="true"></video>
